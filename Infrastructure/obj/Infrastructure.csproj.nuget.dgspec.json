@@ -400,6 +400,14 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[10.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[10.0.10, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[10.0.3, )"
             }
           },
           "imports": [

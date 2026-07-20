@@ -46,7 +46,8 @@ namespace Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("numeric");
+                        .HasPrecision(18, 3)
+                        .HasColumnType("numeric(18,3)");
 
                     b.Property<int>("QuantitiyInStock")
                         .HasColumnType("integer");
