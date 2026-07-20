@@ -1,0 +1,10 @@
+# services:
+#   sql: 
+#     image: mcr.microsoft.com/mssql/serve:2022-latest
+#     environment:
+#       ACCEPT=EULE: "Y"
+#       MSSQL_SA_PASSWORD: "Password@1"
+
+#     ports:
+#       - "1433:1433"
+    
