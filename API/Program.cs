@@ -1,4 +1,6 @@
+using Core.Interfaces;
 using Infrastructure.Data;
+using Infrastructure.services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,8 @@ builder.Services.AddDbContext<StoreContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("Default"));
 });
+
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 

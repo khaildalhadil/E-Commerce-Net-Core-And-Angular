@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZAM7JroSulI=",
+  "dgSpecHash": "hDu+V1kxbCc=",
   "success": true,
-  "projectFilePath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\APi\\API.csproj",
+  "projectFilePath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\khail\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\khail\\.nuget\\packages\\microsoft.build.framework\\18.0.2\\microsoft.build.framework.18.0.2.nupkg.sha512",
