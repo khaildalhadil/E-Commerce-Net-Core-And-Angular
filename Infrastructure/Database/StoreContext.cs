@@ -2,7 +2,7 @@ using Domain.Entities;
 using Infrastructure.Config;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Data;
+namespace Infrastructure.Database;
 
 // options will be sql server connection string
 public class StoreContext(DbContextOptions options): DbContext(options)
