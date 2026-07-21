@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v10.0": {
       "Infrastructure/1.0.0": {
         "dependencies": {
-          "Core": "1.0.0",
+          "Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "10.0.10",
           "Microsoft.EntityFrameworkCore.Design": "10.0.10",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.3"
@@ -594,9 +594,9 @@
           }
         }
       },
-      "Core/1.0.0": {
+      "Domain/1.0.0": {
         "runtime": {
-          "Core.dll": {
+          "Domain.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -841,7 +841,7 @@
       "path": "system.composition.typedparts/9.0.0",
       "hashPath": "system.composition.typedparts.9.0.0.nupkg.sha512"
     },
-    "Core/1.0.0": {
+    "Domain/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
