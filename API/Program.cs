@@ -1,7 +1,8 @@
-using Core.Interfaces;
-using Infrastructure.Data;
+using Application.Interfaces;
+using Infrastructure.Database;
 using Infrastructure.services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,5 +27,18 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
+
+try
+{
+    // it will be destore when it will finish and to add only scope
+    using var scope = app.Services.CreateScope();
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<StoreContext>();
+    await context.Database.MigrateAsync();
+    await StoreContextSeed.SeedAsync(context);
+} catch(Exception ex)
+{
+    Console.WriteLine(ex);
+}
 
 app.Run();

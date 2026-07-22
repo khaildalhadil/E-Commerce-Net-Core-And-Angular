@@ -825,14 +825,27 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Core/1.0.0": {
+      "Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Application.dll": {}
+        }
+      },
+      "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "compile": {
-          "bin/placeholder/Core.dll": {}
+          "bin/placeholder/Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Core.dll": {}
+          "bin/placeholder/Domain.dll": {}
         }
       }
     }
@@ -2654,15 +2667,21 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Core/1.0.0": {
+    "Application/1.0.0": {
       "type": "project",
-      "path": "../Core/Core.csproj",
-      "msbuildProject": "../Core/Core.csproj"
+      "path": "../Application/Application.csproj",
+      "msbuildProject": "../Application/Application.csproj"
+    },
+    "Domain/1.0.0": {
+      "type": "project",
+      "path": "../Domain/Domain.csproj",
+      "msbuildProject": "../Domain/Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "Core >= 1.0.0",
+      "Application >= 1.0.0",
+      "Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 10.0.10",
       "Microsoft.EntityFrameworkCore.Design >= 10.0.10",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 10.0.3"
@@ -2701,8 +2720,11 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\fullStack\\ECommerceNetCoreAndAngular\\Core\\Core.csproj": {
-              "projectPath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Core\\Core.csproj"
+            "D:\\fullStack\\ECommerceNetCoreAndAngular\\Application\\Application.csproj": {
+              "projectPath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Application\\Application.csproj"
+            },
+            "D:\\fullStack\\ECommerceNetCoreAndAngular\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Domain\\Domain.csproj"
             }
           }
         }

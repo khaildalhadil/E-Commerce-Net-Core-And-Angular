@@ -1,6 +1,6 @@
-using Core.Entities;
-using Core.Interfaces;
-using Infrastructure.Data;
+using Domain.Entities;
+using Application.Interfaces;
+using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.services;

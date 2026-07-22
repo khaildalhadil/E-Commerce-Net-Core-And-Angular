@@ -1,9 +1,7 @@
-using Core.Entities;
-using Core.Interfaces;
-using Infrastructure.Data;
+using Domain.Entities;
+using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ActionConstraints;
-using Microsoft.EntityFrameworkCore;
+using Infrastructure.services;
 
 namespace API.Controllers;
 
@@ -41,18 +39,68 @@ public class ProductsController(IProductService productService) : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionConstraint> CreatePoroduct(Product product)
+    public async Task<IActionResult> CreatePoroduct(Product product)
     {
         _productService.AddProduct(product);
-        var isSavted = await _productService.SaveChangesAsync();
-        
-        if (isSavted)
+
+        if (await _productService.SaveChangesAsync())
         {
-            return Created();
+            return CreatedAtAction("GetProduct", new {id = product.Id}, product);
         }
 
         return BadRequest();
     }
- 
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateProduct(int id, Product product)
+    {
+        if (await _productService.GetProductByIdAsync(id) is null)
+        {
+            return NotFound();
+        }
+
+        if (product.Id != id)
+        {
+            return BadRequest("Cannt update this product");
+        }
+
+
+        _productService.UpdateProduct(product);
+
+        if (await _productService.SaveChangesAsync())
+        {
+            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+        }
+
+        return BadRequest();
+    }
+
+    public async Task<IActionResult> DeleteProduct(int id)
+    {
+        var product = await _productService.GetProductByIdAsync(id);
+
+        if (product is null)
+        {
+            return NotFound();
+        }
+
+        _productService.DeleteProduct(product);
+
+        if (await _productService.SaveChangesAsync())
+        {
+            return NoContent();
+        }
+
+        return BadRequest();
+
+
+    }
+
+
+    public async Task<bool> ProductExists(int id)
+    {
+        return await _productService.ProductExists(id);
+    }
+
 
 }
