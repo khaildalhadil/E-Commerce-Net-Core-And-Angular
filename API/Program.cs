@@ -1,6 +1,7 @@
 using Application.Interfaces;
 using Infrastructure.Database;
 using Infrastructure.services;
+using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -17,6 +18,8 @@ builder.Services.AddDbContext<StoreContext>(options =>
 });
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped(typeof (IGenericService<>), typeof (GenericService<>));
+
 
 var app = builder.Build();
 
