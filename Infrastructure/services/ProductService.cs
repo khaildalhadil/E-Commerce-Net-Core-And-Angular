@@ -9,9 +9,28 @@ public class ProductService(StoreContext storeContext) : IProductService
 {
     private readonly StoreContext _storeContext = storeContext;
 
-    public async Task<IReadOnlyList<Product>> GetProductsAsync()
+    public async Task<IReadOnlyList<Product>> GetProductsAsync(string? brand, string? type, string? sort)
     {
-        return await _storeContext.Products.ToListAsync();
+        var query = _storeContext.Products.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(brand))
+        {
+            query = query.Where(p => p.Brand == brand);
+        }
+
+        if (!string.IsNullOrWhiteSpace(type))
+        {
+            query = query.Where(p => p.Type == type);
+        }
+
+        query = sort switch
+        {
+            "priceAsc" => query.OrderBy(b => b.Price),
+            "priceDesc" => query.OrderByDescending(b => b.Price),
+            _ => query.OrderBy(n => n.Name)
+        };
+
+        return await query.ToListAsync();
     }
 
     public async Task<Product?> GetProductByIdAsync(int id)
@@ -43,4 +62,17 @@ public class ProductService(StoreContext storeContext) : IProductService
         return await _storeContext.SaveChangesAsync() > 0;
     }
 
+    public async Task<IReadOnlyList<string>> GetBrandsAsync()
+    {
+        return await _storeContext.Products.Select(p => p.Brand)
+            .Distinct()
+            .ToListAsync();
+    }
+
+    public async Task<IReadOnlyList<string>> GetTypesAsync()
+    {
+        return await _storeContext.Products.Select(p => p.Type)
+            .Distinct()
+            .ToListAsync();
+    }
 }
