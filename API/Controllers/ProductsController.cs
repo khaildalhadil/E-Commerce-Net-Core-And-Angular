@@ -1,26 +1,29 @@
 using Domain.Entities;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Infrastructure.services;
+using Application.Dtos.products;
 
 namespace API.Controllers;
 
 [ApiController]
-///[action]
-[Route("api/[controller]")]
+[Route("api/[controller]/[action]")]
 public class ProductsController(IProductService _productService) : ControllerBase
 {
 
     [HttpGet]
     public async Task<IActionResult> GetProducts(string? brand,string? type, string? sort)
     {
+
         //brand, type, sort
-        IReadOnlyList<Product> allProduct = await _productService.ListAllAsync();
+        IReadOnlyList<Product> allProduct = await _productService.GetProductsAsync(brand, type, sort);
 
         if (allProduct.Count == 0)
         {
             return NotFound(new {Message = "You Don't Have Any Product Yet"});
         }
+
+        // convert to dtos
+        IReadOnlyList<ProductDto> productDtos = allProduct.Select(ProductDto.FromEntity).ToList();
 
         return Ok(allProduct);
     }
@@ -28,22 +31,26 @@ public class ProductsController(IProductService _productService) : ControllerBas
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetProduct(int id)
     {
-        var product = await _productService.GetByIdAsync(id);
+        var product = await _productService.GetProductByIdAsync(id);
 
         if(product is null)
         {
             return NotFound();
         }
 
-        return Ok(product);
+        return Ok(ProductDto.FromEntity(product));
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreatePoroduct(Product product)
+    public async Task<IActionResult> CreatePoroduct(CreateProductDtos createProductDtos)
     {
-        _productService.Add(product);
+        // check validation
 
-        if (await _productService.SaveAllAsync())
+        var product = CreateProductDtos.ToEntity(createProductDtos);
+
+        _productService.AddProduct(product);
+
+        if (await _productService.SaveChangesAsync())
         {
             return CreatedAtAction("GetProduct", new {id = product.Id}, product);
         }
@@ -54,7 +61,7 @@ public class ProductsController(IProductService _productService) : ControllerBas
     [HttpPut("{id:int}")]
     public async Task<IActionResult> UpdateProduct(int id, Product product)
     {
-        if (!_productService.Exsits(id))
+        if (!await _productService.ProductExists(id))
         {
             return NotFound();
         }
@@ -65,9 +72,9 @@ public class ProductsController(IProductService _productService) : ControllerBas
         }
 
 
-        _productService.Update(product);
+        _productService.UpdateProduct(product);
 
-        if (await _productService.SaveAllAsync())
+        if (await _productService.SaveChangesAsync())
         {
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
@@ -78,19 +85,17 @@ public class ProductsController(IProductService _productService) : ControllerBas
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteProduct(int id)
     {
+        var product = await _productService.GetProductByIdAsync(id);
 
-
-        var product = await _productService.GetByIdAsync(id);
-
-        if (!_productService.Exsits(id) || product is null)
+        if (!await _productService.ProductExists(id) || product is null)
         {
             return NotFound();
         }
 
 
-        _productService.Delete(product);
+        _productService.DeleteProduct(product);
 
-        if (await _productService.SaveAllAsync())
+        if (await _productService.SaveChangesAsync())
         {
             return NoContent();
         }
@@ -100,28 +105,21 @@ public class ProductsController(IProductService _productService) : ControllerBas
 
     }
 
-    //[HttpGet("brands")]
-    //public async Task<IActionResult> GetBrands()
-    //{
-    //    return Ok(await _productService.GetBrandsAsync());
-    //}
+    [HttpGet("brands")]
+    public async Task<IActionResult> GetBrands()
+    {
+        return Ok(await _productService.GetBrandsAsync());
+    }
 
-    //[HttpGet("types")]
-    //public async Task<IActionResult> GetTypes()
-    //{
-    //    return Ok(await _productService.GetTypesAsync());
-    //}
-
-    //[HttpGet("")]
-    //public async Task<IActionResult> GetBrandQuery([FromQuery] string brand)
-    //{
-    //    return Ok(new { message = brand });
-    //}
+    [HttpGet("types")]
+    public async Task<IActionResult> GetTypes()
+    {
+        return Ok(await _productService.GetTypesAsync());
+    }
 
     //public async Task<bool> ProductExists(int id)
     //{
     //    return await _productService.ProductExists(id);
     //}
-
 
 }

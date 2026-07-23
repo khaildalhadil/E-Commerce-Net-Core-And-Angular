@@ -36,3 +36,5 @@ D:\fullStack\ECommerceNetCoreAndAngular\Infrastructure\bin\Debug\net10.0\Applica
 D:\fullStack\ECommerceNetCoreAndAngular\Infrastructure\bin\Debug\net10.0\Domain.dll
 D:\fullStack\ECommerceNetCoreAndAngular\Infrastructure\bin\Debug\net10.0\Application.pdb
 D:\fullStack\ECommerceNetCoreAndAngular\Infrastructure\bin\Debug\net10.0\Domain.pdb
+C:\Users\HP\source\repos\E-Commerce-Net-Core-And-Angular\Infrastructure\bin\Debug\net10.0\Application.dll
+C:\Users\HP\source\repos\E-Commerce-Net-Core-And-Angular\Infrastructure\bin\Debug\net10.0\Application.pdb
