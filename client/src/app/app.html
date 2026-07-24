@@ -1,4 +1,11 @@
 
 <app-header />
 
-<p>You Have {{this.allProducts().length}}</p>
+<div class="container mt-6">
+
+	@for (product of this.allProducts(); track product.id){
+		
+		<p>{{product.name}}</p>
+
+	}
+</div> 
