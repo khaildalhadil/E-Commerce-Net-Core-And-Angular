@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\fullStack\\ECommerceNetCoreAndAngular\\Infrastructure\\Infrastructure.csproj": {}
+    "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\fullStack\\ECommerceNetCoreAndAngular\\Application\\Application.csproj": {
+    "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Application\\Application.csproj",
+        "projectPath": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\khail\\.nuget\\packages\\",
-        "outputPath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Application\\obj\\",
+        "outputPath": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\fullStack\\ECommerceNetCoreAndAngular\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Domain\\Domain.csproj"
+              "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj"
               }
             }
           }
@@ -349,14 +349,14 @@
         }
       }
     },
-    "D:\\fullStack\\ECommerceNetCoreAndAngular\\Domain\\Domain.csproj": {
+    "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Domain\\Domain.csproj",
+        "projectPath": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\khail\\.nuget\\packages\\",
-        "outputPath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Domain\\obj\\",
+        "outputPath": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -690,14 +690,14 @@
         }
       }
     },
-    "D:\\fullStack\\ECommerceNetCoreAndAngular\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\khail\\.nuget\\packages\\",
-        "outputPath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Infrastructure\\obj\\",
+        "outputPath": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -719,11 +719,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\fullStack\\ECommerceNetCoreAndAngular\\Application\\Application.csproj": {
-                "projectPath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Application\\Application.csproj"
+              "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Application\\Application.csproj": {
+                "projectPath": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Application\\Application.csproj"
               },
-              "D:\\fullStack\\ECommerceNetCoreAndAngular\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\fullStack\\ECommerceNetCoreAndAngular\\Domain\\Domain.csproj"
+              "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj"
               }
             }
           }
