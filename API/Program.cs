@@ -39,6 +39,9 @@ builder.Services.AddHttpLogging(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// cors
+builder.Services.AddCors();
+
 var app = builder.Build();
 app.UseHttpLogging();
 
@@ -49,6 +52,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+// do handel here
+
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200","https://localhost:4200"));
 
 app.MapControllers();
 
