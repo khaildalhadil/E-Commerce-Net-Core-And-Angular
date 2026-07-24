@@ -3,6 +3,7 @@ using Infrastructure.Database;
 using Infrastructure.services;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,47 +17,40 @@ builder.Services.AddDbContext<StoreContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Default"));
 });
 
-builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddOpenApi();
-builder.Services.AddSwaggerGen();
-
 builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped(typeof (IGenericService<>), typeof (GenericService<>));
+builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 
-builder.Services.AddHttpLogging();
+builder.Host.UseSerilog(
+    (HostBuilderContext context, IServiceProvider services, LoggerConfiguration loggerConfiguration) =>
+    {
+        // see the config file
+        loggerConfiguration.ReadFrom.Configuration(context.Configuration)
+        // add our service to serlog can see them
+        .ReadFrom.Services(services);
+    });
 
-builder.Host.ConfigureLogging(log =>
-{
-    log.ClearProviders();
-    log.AddConsole();
-    log.AddDebug();
-    log.AddEventLog();
-});
-
+// loggen config
 builder.Services.AddHttpLogging(options =>
 {
-    options.LoggingFields =
-        Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.RequestHeaders |
-        Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.RequestQuery;
+    options.LoggingFields = Microsoft.AspNetCore.HttpLogging.HttpLoggingFields.RequestPropertiesAndHeaders;
+    options.RequestHeaders.Add("Authorization");
 });
 
-var app = builder.Build();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
+var app = builder.Build();
 app.UseHttpLogging();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+
     app.UseSwagger();
     app.UseSwaggerUI();
-
 }
 
 app.MapControllers();
-app.UseHttpsRedirection();
-app.UseAuthentication();
-app.UseAuthorization();
 
 try
 {
@@ -66,7 +60,8 @@ try
     var context = services.GetRequiredService<StoreContext>();
     await context.Database.MigrateAsync();
     await StoreContextSeed.SeedAsync(context);
-} catch(Exception ex)
+}
+catch (Exception ex)
 {
     Console.WriteLine(ex);
 }
