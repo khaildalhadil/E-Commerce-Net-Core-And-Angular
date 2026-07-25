@@ -273,3 +273,4 @@ D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Swashbuckle.AspNet
 D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\fullStack\ECommerceNetCoreAndAngular\API\obj\Debug\net10.0\API.MvcApplicationPartsAssemblyInfo.cs
+D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Serilog.Sinks.Seq.dll

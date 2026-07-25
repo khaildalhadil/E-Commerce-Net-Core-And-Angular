@@ -7,7 +7,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]/[action]")]
-public class ProductsController(IProductService _productService) : ControllerBase
+public class ProductsController(IProductService _productService, ILogger<ProductsController> logger) : ControllerBase
 {
 
     [HttpGet]
@@ -25,6 +25,7 @@ public class ProductsController(IProductService _productService) : ControllerBas
         // convert to dtos
         IReadOnlyList<ProductDto> productDtos = allProduct.Select(ProductDto.FromEntity).ToList();
 
+        logger.LogInformation("Get All Products ✔");
         return Ok(allProduct);
     }
 
@@ -35,6 +36,7 @@ public class ProductsController(IProductService _productService) : ControllerBas
 
         if(product is null)
         {
+            logger.LogWarning($"No Uesr With Id {id}");
             return NotFound();
         }
 
