@@ -2,7 +2,6 @@ using Application.Interfaces;
 using Infrastructure.Database;
 using Infrastructure.services;
 using Infrastructure.Services;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
