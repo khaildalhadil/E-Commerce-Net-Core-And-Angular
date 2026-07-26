@@ -3059,23 +3059,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\khail\\.nuget\\packages\\": {},
+    "C:\\Users\\HP\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Desktop\\MyEcommers\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\khail\\.nuget\\packages\\",
-      "outputPath": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\API\\obj\\",
+      "projectPath": "C:\\Users\\HP\\Desktop\\MyEcommers\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HP\\Desktop\\MyEcommers\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\khail\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3091,11 +3091,11 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj"
+            "C:\\Users\\HP\\Desktop\\MyEcommers\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\HP\\Desktop\\MyEcommers\\Domain\\Domain.csproj"
             },
-            "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "D:\\fullStack\\test\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\HP\\Desktop\\MyEcommers\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\HP\\Desktop\\MyEcommers\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

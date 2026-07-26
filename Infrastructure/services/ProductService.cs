@@ -9,13 +9,18 @@ public class ProductService(StoreContext storeContext) : IProductService
 {
     private readonly StoreContext _storeContext = storeContext;
 
-    public async Task<IReadOnlyList<Product>> GetProductsAsync(string? brand, string? type, string? sort)
+    public async Task<IReadOnlyList<Product>> GetProductsAsync(string? brands, string? type, string? sort)
     {
         var query = _storeContext.Products.AsQueryable();
 
-        if (!string.IsNullOrWhiteSpace(brand))
+        if (brands?.Length > 0)
         {
-            query = query.Where(p => p.Brand == brand);
+            string[] brandsArray = brands.Split(",");
+            //query = query.Where(p => p.Brand == brand);
+            for (var i = 0; i < brandsArray.Length; i++)
+            {
+                query = query.Where(p => p.Brand == brandsArray[i]);
+            }
         }
 
         if (!string.IsNullOrWhiteSpace(type))

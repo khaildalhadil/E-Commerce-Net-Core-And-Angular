@@ -2,13 +2,13 @@
 
 	<mat-card class="example-card" appearance="outlined">
 
-		<img mat-card-image src="https://material.angular.dev/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+		<img mat-card-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy5WctJJXee_nps1XmcxeHa1-A7LdD7XL2G1zdgRFHqAIjjUrhWOp-lotE&s=10" alt="Photo of a Shiba Inu">
 
 		<mat-card-content class="mt-2">
 			<h2 class="text-sm font-semibold uppercase" >
 				{{product.name}}
 			</h2>
-			<p class="font-light">{{product.price | currency}}</p>
+			<p class="font-light">{{product.price.toFixed(3)}}</p>
 		</mat-card-content>
 
 		<mat-card-actions>
