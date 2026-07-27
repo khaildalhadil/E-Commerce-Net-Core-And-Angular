@@ -1,3 +1,4 @@
+using API.Middleware;
 using Application.Interfaces;
 using Infrastructure.Database;
 using Infrastructure.services;
@@ -78,6 +79,8 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
+
+    app.UseMiddleware<ExceptionMiddlware>();
 
     app.MapControllers();
 
