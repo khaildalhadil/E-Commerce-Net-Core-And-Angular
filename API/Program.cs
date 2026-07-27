@@ -20,7 +20,7 @@ try
 {
     Log.Information("Starting SotreListing API");
     var builder = WebApplication.CreateBuilder(args);
-
+    builder.Services.AddCors();
     builder.Host.UseSerilog(
         (context, services, configuration) =>
         {
@@ -81,7 +81,7 @@ try
     }
 
     app.UseMiddleware<ExceptionMiddlware>();
-
+    app.UseCors(x=> x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
     app.MapControllers();
 
     try

@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../shared/models/product';
+import { CreateProduct } from '../shared/models/createProduct';
 
 const baseURL = "http://localhost:5130/api/Products";
 
@@ -33,6 +34,9 @@ export class ShopService {
         this.httpClient.get<string[]>(`${baseURL}/GetTypes/types`).subscribe({
             next: (data)=> this.types = data
         })
+    }
+    AddProduct(product: CreateProduct): Observable<Product> {
+        return this.httpClient.post<Product>(`${baseURL}/CreatePoroduct`, product);
     }
 
 }
