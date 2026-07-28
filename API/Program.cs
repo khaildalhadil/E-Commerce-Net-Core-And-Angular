@@ -27,6 +27,7 @@ try
         builder.Environment.EnvironmentName,
         Environment.MachineName);
 
+    builder.Services.AddCors();
     builder.Host.UseSerilog(
         (context, services, configuration) =>
         {
@@ -138,7 +139,7 @@ try
     }
 
     app.UseMiddleware<ExceptionMiddlware>();
-
+    app.UseCors(x=> x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
     app.MapControllers();
 
     try
