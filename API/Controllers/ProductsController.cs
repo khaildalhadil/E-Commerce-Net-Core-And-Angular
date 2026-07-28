@@ -19,13 +19,15 @@ public class ProductsController(IProductService _productService, ILogger<Product
 
         if (allProduct.Count == 0)
         {
+            logger.LogInformation(
+                "No products matched filters Brand={Brand} Type={Type} Sort={Sort}",
+                brand, type, sort);
             return NotFound(new {Message = "You Don't Have Any Product Yet"});
         }
 
         // convert to dtos
         IReadOnlyList<ProductDto> productDtos = allProduct.Select(ProductDto.FromEntity).ToList();
 
-        logger.LogInformation("Get All Products ✔");
         return Ok(allProduct);
     }
 
@@ -36,7 +38,7 @@ public class ProductsController(IProductService _productService, ILogger<Product
 
         if(product is null)
         {
-            logger.LogWarning($"No Uesr With Id {id}");
+            logger.LogWarning("Product {ProductId} not found", id);
             return NotFound();
         }
 
@@ -54,9 +56,13 @@ public class ProductsController(IProductService _productService, ILogger<Product
 
         if (await _productService.SaveChangesAsync())
         {
+            logger.LogInformation(
+                "Created product {ProductId} ({ProductName}) brand {Brand}",
+                product.Id, product.Name, product.Brand);
             return CreatedAtAction("GetProduct", new {id = product.Id}, product);
         }
 
+        logger.LogWarning("Create product {ProductName} persisted no changes", product.Name);
         return BadRequest();
     }
 
@@ -65,11 +71,15 @@ public class ProductsController(IProductService _productService, ILogger<Product
     {
         if (!await _productService.ProductExists(id))
         {
+            logger.LogWarning("Update rejected: product {ProductId} not found", id);
             return NotFound();
         }
 
         if (product.Id != id)
         {
+            logger.LogWarning(
+                "Update rejected: route id {RouteId} does not match body id {BodyId}",
+                id, product.Id);
             return BadRequest("Cannt update this product");
         }
 
@@ -78,9 +88,11 @@ public class ProductsController(IProductService _productService, ILogger<Product
 
         if (await _productService.SaveChangesAsync())
         {
+            logger.LogInformation("Updated product {ProductId}", id);
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
+        logger.LogWarning("Update of product {ProductId} persisted no changes", id);
         return BadRequest();
     }
 
@@ -91,6 +103,7 @@ public class ProductsController(IProductService _productService, ILogger<Product
 
         if (!await _productService.ProductExists(id) || product is null)
         {
+            logger.LogWarning("Delete rejected: product {ProductId} not found", id);
             return NotFound();
         }
 
@@ -99,9 +112,11 @@ public class ProductsController(IProductService _productService, ILogger<Product
 
         if (await _productService.SaveChangesAsync())
         {
+            logger.LogInformation("Deleted product {ProductId} ({ProductName})", id, product.Name);
             return NoContent();
         }
 
+        logger.LogWarning("Delete of product {ProductId} persisted no changes", id);
         return BadRequest();
 
 

@@ -1,10 +1,10 @@
-﻿using API.Errors;
+using API.Errors;
 using System.Net;
 using System.Text.Json;
 
 namespace API.Middleware;
 
-public class ExceptionMiddlware(IHostEnvironment env, RequestDelegate next)
+public class ExceptionMiddlware(IHostEnvironment env, RequestDelegate next, ILogger<ExceptionMiddlware> logger)
 {
     public async Task InvokeAsync(HttpContext context)
     {
@@ -12,6 +12,16 @@ public class ExceptionMiddlware(IHostEnvironment env, RequestDelegate next)
         {
             await next(context);
         } catch (Exception ex) {
+
+            // Every unhandled exception is logged exactly once, here, with the exception
+            // object attached so Seq keeps the full type/message/stack trace.
+            logger.LogError(
+                ex,
+                "Unhandled {ExceptionType} on {RequestMethod} {RequestPath} (TraceId {TraceId})",
+                ex.GetType().Name,
+                context.Request.Method,
+                context.Request.Path,
+                context.TraceIdentifier);
 
             await HandleExceptionAsync(context, ex, env);
         }
@@ -22,8 +32,8 @@ public class ExceptionMiddlware(IHostEnvironment env, RequestDelegate next)
         context.Response.ContentType = "Application/json";
         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-        var response = env.IsDevelopment() ? 
-            new ApiErrorResponse(context.Response.StatusCode, ex.Message, ex.StackTrace) 
+        var response = env.IsDevelopment() ?
+            new ApiErrorResponse(context.Response.StatusCode, ex.Message, ex.StackTrace)
                 : new ApiErrorResponse(context.Response.StatusCode, ex.Message, "Internal server error");
 
         var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };

@@ -19,16 +19,7 @@ D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.EntityFr
 D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.Extensions.Caching.Abstractions.dll
-D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.Extensions.Caching.Memory.dll
-D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.Extensions.DependencyInjection.dll
-D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.Extensions.DependencyModel.dll
-D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.Extensions.Logging.dll
-D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.Extensions.Options.dll
-D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.Extensions.Primitives.dll
 D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.OpenApi.dll
 D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Microsoft.VisualStudio.SolutionPersistence.dll
 D:\fullStack\ECommerceNetCoreAndAngular\API\bin\Debug\net10.0\Mono.TextTemplating.dll
@@ -144,7 +135,6 @@ D:\fullStack\ECommerceNetCoreAndAngular\API\obj\Debug\net10.0\staticwebassets.bu
 D:\fullStack\ECommerceNetCoreAndAngular\API\obj\Debug\net10.0\staticwebassets.development.json
 D:\fullStack\ECommerceNetCoreAndAngular\API\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 D:\fullStack\ECommerceNetCoreAndAngular\API\obj\Debug\net10.0\swae.build.ex.cache
-D:\fullStack\ECommerceNetCoreAndAngular\API\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 D:\fullStack\ECommerceNetCoreAndAngular\API\obj\Debug\net10.0\API.csproj.Up2Date
 D:\fullStack\ECommerceNetCoreAndAngular\API\obj\Debug\net10.0\API.dll
 D:\fullStack\ECommerceNetCoreAndAngular\API\obj\Debug\net10.0\refint\API.dll

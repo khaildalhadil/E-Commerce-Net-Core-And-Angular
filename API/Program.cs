@@ -3,7 +3,9 @@ using Application.Interfaces;
 using Infrastructure.Database;
 using Infrastructure.services;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -18,8 +20,12 @@ Log.Logger = new LoggerConfiguration()
 
 try
 {
-    Log.Information("Starting SotreListing API");
     var builder = WebApplication.CreateBuilder(args);
+
+    Log.Information(
+        "Starting StoreListing API in {Environment} environment on {MachineName}",
+        builder.Environment.EnvironmentName,
+        Environment.MachineName);
 
     builder.Host.UseSerilog(
         (context, services, configuration) =>
@@ -32,10 +38,58 @@ try
 
     builder.Services.AddControllers();
 
+    // [ApiController] short-circuits invalid models before the action runs, so validation
+    // failures can only be observed here. The built-in factory still builds the response,
+    // which keeps the 400 payload byte-for-byte identical.
+    builder.Services.PostConfigure<ApiBehaviorOptions>(options =>
+    {
+        var builtInFactory = options.InvalidModelStateResponseFactory;
+
+        options.InvalidModelStateResponseFactory = actionContext =>
+        {
+            var validationLogger = actionContext.HttpContext.RequestServices
+                .GetRequiredService<ILoggerFactory>()
+                .CreateLogger("API.ModelValidation");
+
+            // Field names only - attempted values may contain user data and are never logged.
+            var invalidFields = actionContext.ModelState
+                .Where(entry => entry.Value?.Errors.Count > 0)
+                .Select(entry => entry.Key)
+                .ToArray();
+
+            validationLogger.LogWarning(
+                "Validation failed for {RequestMethod} {RequestPath} on fields {InvalidFields}",
+                actionContext.HttpContext.Request.Method,
+                actionContext.HttpContext.Request.Path,
+                invalidFields);
+
+            return builtInFactory(actionContext);
+        };
+    });
+
     // StoreContext added to DI Con
+    var connectionString = builder.Configuration.GetConnectionString("Default");
+
+    if (string.IsNullOrWhiteSpace(connectionString))
+    {
+        // Without a connection string every request that touches the database will fail,
+        // so surface it at startup instead of as a wall of runtime errors.
+        Log.Fatal("Connection string {ConnectionName} is missing; the API cannot serve data", "Default");
+    }
+    else
+    {
+        // Log only the non-sensitive parts of the connection string - never username/password.
+        var dbInfo = new NpgsqlConnectionStringBuilder(connectionString);
+        Log.Information(
+            "Database configured: {DbHost}:{DbPort}/{DbName}",
+            dbInfo.Host,
+            dbInfo.Port,
+            dbInfo.Database);
+    }
+
     builder.Services.AddDbContext<StoreContext>(options =>
     {
-        options.UseNpgsql(builder.Configuration.GetConnectionString("Default"));
+        options.UseNpgsql(connectionString);
     });
 
     builder.Services.AddScoped<IProductService, ProductService>();
@@ -62,7 +116,10 @@ try
         {
             diagnosticContext.Set("UserName", httpContext.User?.Identity?.Name ?? "anonymous");
 
-            diagnosticContext.Set("RemoteIP", httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknoown");
+            diagnosticContext.Set("RemoteIP", httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown");
+
+            // Correlates every request-completion event with the errors logged by ExceptionMiddlware.
+            diagnosticContext.Set("TraceId", httpContext.TraceIdentifier);
 
             if(httpContext.User?.Identity?.IsAuthenticated == true) {
                 diagnosticContext.Set("UserId", httpContext.User.FindFirst("sub")?.Value ?? "unknown");
@@ -75,7 +132,7 @@ try
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
-        Log.Information("We Are In Development Env");
+        Log.Information("Development environment detected, enabling Swagger UI");
         app.UseSwagger();
         app.UseSwaggerUI();
     }
@@ -90,25 +147,31 @@ try
         using var scope = app.Services.CreateScope();
         var services = scope.ServiceProvider;
         var context = services.GetRequiredService<StoreContext>();
+
+        Log.Information("Applying database migrations");
         await context.Database.MigrateAsync();
+
         await StoreContextSeed.SeedAsync(context);
-        Log.Information("Seed Product Done");
+
+        Log.Information("Database migration and seeding completed");
     }
     catch (Exception ex)
     {
-        Log.Fatal(ex.Message);
-        Console.WriteLine(ex);
+        // The app deliberately keeps starting after a seeding failure, so this is an
+        // error - not fatal - but it needs the full exception to be diagnosable.
+        Log.Error(ex, "Database migration or seeding failed; API is starting with a possibly incomplete database");
     }
 
-    Log.Information("HotelLinsting API stared Successfully");
+    Log.Information("StoreListing API started successfully");
 
     app.Run();
 
 } catch(Exception err)
 {
-    Log.Fatal(err.Message, "Application terminated ");
+    Log.Fatal(err, "Application terminated unexpectedly during startup");
 }
 finally
 {
+    Log.Information("Shutting down StoreListing API");
     Log.CloseAndFlush();
 }
