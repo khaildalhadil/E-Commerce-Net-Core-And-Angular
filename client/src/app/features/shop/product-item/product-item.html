@@ -2,14 +2,16 @@
 
 	<mat-card class="example-card" appearance="outlined">
 
-		<img mat-card-image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy5WctJJXee_nps1XmcxeHa1-A7LdD7XL2G1zdgRFHqAIjjUrhWOp-lotE&s=10" alt="Photo of a Shiba Inu">
+		<a [routerLink]="['/product', product.id]">
+			<img mat-card-image [src]="product.pictureUrl" [alt]="product.name">
 
-		<mat-card-content class="mt-2">
-			<h2 class="text-sm font-semibold uppercase" >
-				{{product.name}}
-			</h2>
-			<p class="font-light">{{product.price.toFixed(3)}}</p>
-		</mat-card-content>
+			<mat-card-content class="mt-2">
+				<h2 class="text-sm font-semibold uppercase" >
+					{{product.name}}
+				</h2>
+				<p class="font-light">{{product.price | number:'1.3-3'}} ر.ع.</p>
+			</mat-card-content>
+		</a>
 
 		<mat-card-actions>
 			<button class="w-full" mat-stroked-button>

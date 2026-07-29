@@ -67,13 +67,15 @@ public class ProductsController(IProductService _productService, ILogger<Product
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> UpdateProduct(int id, Product product)
+    public async Task<IActionResult> UpdateProduct(int id, CreateProductDtos createProductDtos)
     {
         if (!await _productService.ProductExists(id))
         {
             logger.LogWarning("Update rejected: product {ProductId} not found", id);
             return NotFound();
         }
+
+        var product = CreateProductDtos.ToEntity(createProductDtos);
 
         if (product.Id != id)
         {

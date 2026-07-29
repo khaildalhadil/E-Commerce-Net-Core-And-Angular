@@ -1,12 +1,17 @@
 using API.Middleware;
 using Application.Interfaces;
+using Domain.Entities;
 using Infrastructure.Database;
 using Infrastructure.services;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Npgsql;
 using Serilog;
+using System.Text;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
@@ -95,6 +100,28 @@ try
 
     builder.Services.AddScoped<IProductService, ProductService>();
     builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
+    builder.Services.AddScoped<ITokenService, TokenService>();
+
+    builder.Services.AddIdentityCore<AppUser>(options =>
+    {
+        options.Password.RequireNonAlphanumeric = false;
+    })
+        .AddEntityFrameworkStores<StoreContext>();
+
+    var tokenKey = builder.Configuration["Token:Key"]
+        ?? throw new InvalidOperationException("Token:Key is missing from configuration");
+
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey)),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+            };
+        });
 
 
     //// loggen config
@@ -140,6 +167,8 @@ try
 
     app.UseMiddleware<ExceptionMiddlware>();
     app.UseCors(x=> x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+    app.UseAuthentication();
+    app.UseAuthorization();
     app.MapControllers();
 
     try

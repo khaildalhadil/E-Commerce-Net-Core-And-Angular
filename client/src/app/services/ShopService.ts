@@ -39,4 +39,12 @@ export class ShopService {
         return this.httpClient.post<Product>(`${baseURL}/CreatePoroduct`, product);
     }
 
+    getProduct(id: number): Observable<Product> {
+        return this.httpClient.get<Product>(`${baseURL}/GetProduct/${id}`);
+    }
+
+    GerImage(promat: string): Observable<string>{
+        return this.httpClient.post<string>(`http://localhost:5130/api/Image/generate`, {prompt: promat});
+    }
+
 }

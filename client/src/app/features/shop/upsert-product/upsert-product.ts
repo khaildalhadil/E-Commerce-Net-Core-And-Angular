@@ -11,6 +11,8 @@ import { ShopService } from '../../../services/ShopService';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CreateProduct } from '../../../shared/models/createProduct';
 
+const DEFAULT_IMAGE_URL = 'https://placehold.co/400x400?text=No+Image';
+
 @Component({
   selector: 'app-upsert-product',
     imports: [ReactiveFormsModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatIconModule],
@@ -18,18 +20,19 @@ import { CreateProduct } from '../../../shared/models/createProduct';
   templateUrl: './upsert-product.html',
   styleUrl: './upsert-product.css',
 })
-export class UpsertProduct { 
+export class UpsertProduct {
 
   userDataToUpdate = signal<Product[]>([]);
-
+  imageUrl = signal<string>(DEFAULT_IMAGE_URL);
+  isLoading = signal<boolean>(false);
   constructor(
-    private shopServie: ShopService, 
-    private routes: Router, 
+    private shopServie: ShopService,
+    private routes: Router,
     private route: ActivatedRoute,
   ) {}
 
   productForm = new FormGroup({
-    name: new FormControl("", [
+    name: new FormControl("red shoes", [
       Validators.required,
       Validators.maxLength(40),
       Validators.minLength(2)
@@ -46,7 +49,7 @@ export class UpsertProduct {
     Validators.min(0)
   ]),
 
-  pictureUrl: new FormControl("", [
+  pictureUrl: new FormControl(DEFAULT_IMAGE_URL, [
     Validators.required
   ]),
 
@@ -69,11 +72,11 @@ export class UpsertProduct {
 });
 
   Save() {
-    
+
     if (this.productForm.valid) {
       this.shopServie.AddProduct(this.productForm.value as CreateProduct).subscribe({
-        next: (em) => {
-          console.log("Added")
+        next: () => {
+          this.routes.navigate(['/']);
         },
         error: (err)=> {
           console.log(err);
@@ -86,6 +89,26 @@ export class UpsertProduct {
       console.log(this.productForm.value)
       console.log(this.productForm.valid)
     }
+  }
+
+  gerImage() {
+    this.isLoading.set(true)
+    this.shopServie.GerImage(this.productForm.value.name as string).subscribe({
+      next: (imageUrlFromAI) => {
+        this.imageUrl.set(imageUrlFromAI);
+        this.productForm.patchValue({ pictureUrl: imageUrlFromAI });
+      },
+      error: (err) => console.log(err),
+      complete: () =>{
+        this.isLoading.set(false)
+      },
+    })
+
+  }
+
+  deletImage() {
+    this.imageUrl.set(DEFAULT_IMAGE_URL);
+    this.productForm.patchValue({ pictureUrl: DEFAULT_IMAGE_URL });
   }
 
 }
