@@ -1,3 +1,4 @@
+using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
@@ -7,7 +8,10 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ImageController(ILogger<ImageController> _logger, IConfiguration _configuration) : ControllerBase
+public class ImageController(
+    ILogger<ImageController> _logger,
+    IConfiguration _configuration,
+    IHttpClientFactory _httpClientFactory) : ControllerBase
 {
     [HttpPost("generate")]
     public async Task<IActionResult> Generate([FromBody] ImageRequest request)
@@ -22,7 +26,7 @@ public class ImageController(ILogger<ImageController> _logger, IConfiguration _c
         var token = _configuration["Replicate:ApiToken"]
             ?? throw new InvalidOperationException("Replicate:ApiToken is not configured.");
 
-        using var http = new HttpClient();
+        var http = _httpClientFactory.CreateClient("Replicate");
 
         http.DefaultRequestHeaders.Authorization =
             new AuthenticationHeaderValue("Bearer", token);
@@ -39,21 +43,41 @@ public class ImageController(ILogger<ImageController> _logger, IConfiguration _c
 
         var json = JsonSerializer.Serialize(body);
 
-        var content = new StringContent(
-            json,
-            Encoding.UTF8,
-            "application/json");
+        const int maxAttempts = 3;
+        string responseJson = string.Empty;
+        HttpStatusCode statusCode;
+        var attempt = 0;
+        while (true)
+        {
+            attempt++;
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await http.PostAsync(
+                "https://api.replicate.com/v1/models/black-forest-labs/flux-schnell/predictions",
+                content);
 
-        var response = await http.PostAsync(
-            "https://api.replicate.com/v1/models/black-forest-labs/flux-schnell/predictions",
-            content);
+            responseJson = await response.Content.ReadAsStringAsync();
+            statusCode = response.StatusCode;
+            _logger.LogInformation(responseJson ?? "MT JSON");
 
-        var responseJson = await response.Content.ReadAsStringAsync();
-        _logger.LogInformation(responseJson ?? "MT JSON");
-        if (!response.IsSuccessStatusCode)
-            throw new Exception(responseJson);
+            if (response.IsSuccessStatusCode)
+                break;
 
-        using var doc = JsonDocument.Parse(responseJson);
+            // Transient failures (rate limiting, server errors, or the model's serving
+            // adapter not yet warmed up) are worth a couple of quick retries; anything
+            // else (bad request, auth) will just fail the same way again.
+            var isTransient = statusCode is HttpStatusCode.TooManyRequests
+                or HttpStatusCode.BadGateway
+                or HttpStatusCode.ServiceUnavailable
+                or HttpStatusCode.GatewayTimeout
+                || (int)statusCode >= 500;
+
+            if (!isTransient || attempt >= maxAttempts)
+                throw new Exception(responseJson);
+
+            await Task.Delay(TimeSpan.FromSeconds(Math.Pow(2, attempt)));
+        }
+
+        using var doc = JsonDocument.Parse(responseJson!);
         var getUrl = doc.RootElement.GetProperty("urls").GetProperty("get").GetString()!;
         var status = doc.RootElement.GetProperty("status").GetString();
         var output = doc.RootElement.TryGetProperty("output", out var initialOutput) ? initialOutput.Clone() : default;

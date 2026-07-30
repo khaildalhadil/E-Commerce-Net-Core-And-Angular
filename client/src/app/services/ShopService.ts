@@ -47,4 +47,16 @@ export class ShopService {
         return this.httpClient.post<string>(`http://localhost:5130/api/Image/generate`, {prompt: promat});
     }
 
+    GenerateProductText(productName: string): Observable<ProductAiText> {
+        return this.httpClient.post<ProductAiText>(`http://localhost:5130/api/Text/generate`, { productName });
+    }
+
+}
+
+export interface ProductAiText {
+    description: string;
+    price: number;
+    type: string;
+    brand: string;
+    quantityInStock: number;
 }

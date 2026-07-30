@@ -151,6 +151,18 @@ try
 
     builder.Services.AddSingleton<ICartService, CartService>();
 
+    // "Prefer: wait" can hold the connection open for up to ~60s on Replicate's side
+    // before falling back to polling, so the client timeout must clear that with margin.
+    builder.Services.AddHttpClient("Replicate", client =>
+    {
+        client.Timeout = TimeSpan.FromMinutes(3);
+    });
+
+    builder.Services.AddHttpClient("OpenAI", client =>
+    {
+        client.Timeout = TimeSpan.FromSeconds(60);
+    });
+
     var app = builder.Build();
 
     app.UseSerilogRequestLogging(options =>

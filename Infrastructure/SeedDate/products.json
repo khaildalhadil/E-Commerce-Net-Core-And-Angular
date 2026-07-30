@@ -1,164 +1,92 @@
 [
   {
-    "Name": "Panadol Extra (Paracetamol + Caffeine) - 24 Tablets",
-    "Description": "Fast-acting pain reliever combining paracetamol and caffeine for headaches, migraines, and body aches.",
-    "Price": 1.250,
-    "PictureUrl": "https://loremflickr.com/500/500/tablet?lock=201",
-    "Type": "Pain Relief",
-    "Brand": "GSK",
-    "QuantitiyInStock": 140
+    "Name": "iPhone 16 Pro 256GB",
+    "Description": "Apple iPhone 16 Pro with A18 Pro chip.",
+    "Price": 499.900,
+    "PictureUrl": "https://picsum.photos/seed/iphone16pro/500/500",
+    "Type": "Smartphones",
+    "Brand": "Apple",
+    "QuantitiyInStock": 25
   },
   {
-    "Name": "Panadol Cold & Flu - 24 Tablets",
-    "Description": "Relieves fever, headache, nasal congestion, and sore throat associated with the common cold and flu.",
-    "Price": 1.500,
-    "PictureUrl": "https://loremflickr.com/500/500/medicine?lock=202",
-    "Type": "Cold & Flu",
-    "Brand": "GSK",
-    "QuantitiyInStock": 95
+    "Name": "Samsung Galaxy S25 Ultra",
+    "Description": "Flagship Android smartphone.",
+    "Price": 459.900,
+    "PictureUrl": "https://picsum.photos/seed/galaxys25/500/500",
+    "Type": "Smartphones",
+    "Brand": "Samsung",
+    "QuantitiyInStock": 30
   },
   {
-    "Name": "Voltaren Emulgel 1% - 50g",
-    "Description": "Topical anti-inflammatory gel for fast relief of muscle and joint pain, sprains, and localized swelling.",
-    "Price": 3.200,
-    "PictureUrl": "https://loremflickr.com/500/500/gel?lock=203",
-    "Type": "Pain Relief",
-    "Brand": "Novartis",
-    "QuantitiyInStock": 60
+    "Name": "MacBook Air M4",
+    "Description": "Apple laptop with M4 chip.",
+    "Price": 649.900,
+    "PictureUrl": "https://picsum.photos/seed/macbookm4/500/500",
+    "Type": "Laptops",
+    "Brand": "Apple",
+    "QuantitiyInStock": 15
   },
   {
-    "Name": "Nurofen 200mg (Ibuprofen) - 24 Tablets",
-    "Description": "Ibuprofen-based tablets for the relief of pain, inflammation, and fever in adults.",
-    "Price": 1.800,
-    "PictureUrl": "https://loremflickr.com/500/500/tablet?lock=204",
-    "Type": "Pain Relief",
-    "Brand": "Reckitt",
-    "QuantitiyInStock": 88
+    "Name": "Dell XPS 14",
+    "Description": "Premium Windows laptop.",
+    "Price": 699.900,
+    "PictureUrl": "https://picsum.photos/seed/dellxps14/500/500",
+    "Type": "Laptops",
+    "Brand": "Dell",
+    "QuantitiyInStock": 18
   },
   {
-    "Name": "Strepsils Honey & Lemon Lozenges - 24s",
-    "Description": "Soothing throat lozenges that relieve sore throat pain and mild throat infections.",
-    "Price": 1.100,
-    "PictureUrl": "https://loremflickr.com/500/500/lozenge?lock=205",
-    "Type": "Cold & Flu",
-    "Brand": "Reckitt",
-    "QuantitiyInStock": 112
+    "Name": "Sony WH-1000XM6",
+    "Description": "Wireless noise-cancelling headphones.",
+    "Price": 159.900,
+    "PictureUrl": "https://picsum.photos/seed/sonyheadphones/500/500",
+    "Type": "Audio",
+    "Brand": "Sony",
+    "QuantitiyInStock": 40
   },
   {
-    "Name": "Vicks VapoRub - 50ml",
-    "Description": "Menthol and eucalyptus vapor rub that eases cough and nasal congestion when applied to chest and throat.",
-    "Price": 1.950,
-    "PictureUrl": "https://loremflickr.com/500/500/balm?lock=206",
-    "Type": "Cold & Flu",
-    "Brand": "Vicks",
-    "QuantitiyInStock": 70
+    "Name": "AirPods Pro 2",
+    "Description": "Apple wireless earbuds.",
+    "Price": 99.900,
+    "PictureUrl": "https://picsum.photos/seed/airpodspro2/500/500",
+    "Type": "Audio",
+    "Brand": "Apple",
+    "QuantitiyInStock": 55
   },
   {
-    "Name": "Centrum Adult Multivitamin - 30 Tablets",
-    "Description": "Complete daily multivitamin with 24 essential nutrients to support energy, immunity, and overall health.",
-    "Price": 6.500,
-    "PictureUrl": "https://loremflickr.com/500/500/vitamins?lock=207",
-    "Type": "Vitamins & Supplements",
-    "Brand": "Centrum",
-    "QuantitiyInStock": 45
+    "Name": "Apple Watch Series 10",
+    "Description": "Smartwatch with health tracking.",
+    "Price": 179.900,
+    "PictureUrl": "https://picsum.photos/seed/applewatch10/500/500",
+    "Type": "Wearables",
+    "Brand": "Apple",
+    "QuantitiyInStock": 28
   },
   {
-    "Name": "Centrum Kids Multivitamin Gummies - 60s",
-    "Description": "Fruit-flavored multivitamin gummies formulated to support children's growth and development.",
-    "Price": 5.900,
-    "PictureUrl": "https://loremflickr.com/500/500/supplement?lock=208",
-    "Type": "Vitamins & Supplements",
-    "Brand": "Centrum",
-    "QuantitiyInStock": 38
+    "Name": "PlayStation 5 Slim",
+    "Description": "Next-generation gaming console.",
+    "Price": 239.900,
+    "PictureUrl": "https://picsum.photos/seed/ps5slim/500/500",
+    "Type": "Gaming",
+    "Brand": "Sony",
+    "QuantitiyInStock": 14
   },
   {
-    "Name": "Vitamin C 1000mg Effervescent - 20 Tablets",
-    "Description": "High-dose vitamin C effervescent tablets that dissolve in water to support the immune system.",
-    "Price": 4.750,
-    "PictureUrl": "https://loremflickr.com/500/500/vitamins?lock=209",
-    "Type": "Vitamins & Supplements",
-    "Brand": "Redoxon",
-    "QuantitiyInStock": 52
+    "Name": "Xbox Series X",
+    "Description": "Powerful gaming console.",
+    "Price": 229.900,
+    "PictureUrl": "https://picsum.photos/seed/xboxseriesx/500/500",
+    "Type": "Gaming",
+    "Brand": "Microsoft",
+    "QuantitiyInStock": 18
   },
   {
-    "Name": "Omega-3 Fish Oil 1000mg - 60 Softgels",
-    "Description": "Purified fish oil softgels rich in EPA and DHA to support heart and brain health.",
-    "Price": 10.200,
-    "PictureUrl": "https://loremflickr.com/500/500/fishoil?lock=210",
-    "Type": "Vitamins & Supplements",
-    "Brand": "Nature's Bounty",
-    "QuantitiyInStock": 26
-  },
-  {
-    "Name": "Betadine Antiseptic Solution - 120ml",
-    "Description": "Povidone-iodine antiseptic solution for cleaning and disinfecting minor cuts, wounds, and grazes.",
-    "Price": 2.100,
-    "PictureUrl": "https://loremflickr.com/500/500/disinfectant?lock=211",
-    "Type": "First Aid",
-    "Brand": "Betadine",
-    "QuantitiyInStock": 64
-  },
-  {
-    "Name": "Band-Aid Adhesive Bandages - 40 Pieces",
-    "Description": "Flexible fabric bandages that protect minor cuts and blisters while allowing the skin to breathe.",
-    "Price": 1.350,
-    "PictureUrl": "https://loremflickr.com/500/500/bandage?lock=212",
-    "Type": "First Aid",
-    "Brand": "Band-Aid",
-    "QuantitiyInStock": 130
-  },
-  {
-    "Name": "ORS Oral Rehydration Salts - 10 Sachets",
-    "Description": "Electrolyte rehydration salts that replace fluids and minerals lost during diarrhea or vomiting.",
-    "Price": 2.500,
-    "PictureUrl": "https://loremflickr.com/500/500/sachets?lock=213",
-    "Type": "Digestive Health",
-    "Brand": "ORS",
-    "QuantitiyInStock": 58
-  },
-  {
-    "Name": "Enterogermina Probiotic - 20 Vials",
-    "Description": "Live probiotic supplement that helps restore healthy gut flora during and after digestive upsets.",
-    "Price": 5.400,
-    "PictureUrl": "https://loremflickr.com/500/500/vial?lock=214",
-    "Type": "Digestive Health",
-    "Brand": "Sanofi",
-    "QuantitiyInStock": 34
-  },
-  {
-    "Name": "Eno Fruit Salt Regular - 100g",
-    "Description": "Fast-acting effervescent powder that relieves acidity, indigestion, and bloating.",
-    "Price": 1.700,
-    "PictureUrl": "https://loremflickr.com/500/500/powder?lock=215",
-    "Type": "Digestive Health",
-    "Brand": "Eno",
-    "QuantitiyInStock": 80
-  },
-  {
-    "Name": "Nivea Repair & Care Hand Cream - 75ml",
-    "Description": "Nourishing hand cream with shea butter and almond oil that repairs dry, cracked skin.",
-    "Price": 2.300,
-    "PictureUrl": "https://loremflickr.com/500/500/lotion?lock=216",
-    "Type": "Skin Care",
-    "Brand": "Nivea",
-    "QuantitiyInStock": 72
-  },
-  {
-    "Name": "Cetaphil Gentle Skin Cleanser - 250ml",
-    "Description": "Soap-free, fragrance-free cleanser suitable for sensitive and dry skin, dermatologist recommended.",
-    "Price": 6.800,
-    "PictureUrl": "https://loremflickr.com/500/500/cleanser?lock=217",
-    "Type": "Skin Care",
-    "Brand": "Cetaphil",
-    "QuantitiyInStock": 41
-  },
-  {
-    "Name": "Sudocrem Healing Cream - 60g",
-    "Description": "Antiseptic healing cream that soothes and protects skin affected by minor cuts, burns, and rashes.",
-    "Price": 3.100,
-    "PictureUrl": "https://loremflickr.com/500/500/cream?lock=218",
-    "Type": "Skin Care",
-    "Brand": "Sudocrem",
-    "QuantitiyInStock": 49
+    "Name": "Samsung 27-inch 4K Monitor",
+    "Description": "Ultra HD IPS monitor.",
+    "Price": 129.900,
+    "PictureUrl": "https://picsum.photos/seed/samsungmonitor/500/500",
+    "Type": "Monitors",
+    "Brand": "Samsung",
+    "QuantitiyInStock": 22
   }
 ]

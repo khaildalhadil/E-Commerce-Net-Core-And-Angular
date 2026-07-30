@@ -6,7 +6,7 @@ using Domain.Entities;
 namespace API.Controllers;
 
 [ApiController]
-[Route("api/")]
+[Route("api/[controller]")]
 public class CartController(ICartService cartService) : ControllerBase
 {
     [HttpGet]

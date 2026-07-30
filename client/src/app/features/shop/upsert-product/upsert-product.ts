@@ -25,6 +25,7 @@ export class UpsertProduct {
   userDataToUpdate = signal<Product[]>([]);
   imageUrl = signal<string>(DEFAULT_IMAGE_URL);
   isLoading = signal<boolean>(false);
+  isTextLoading = signal<boolean>(false);
   constructor(
     private shopServie: ShopService,
     private routes: Router,
@@ -94,9 +95,10 @@ export class UpsertProduct {
   gerImage() {
     this.isLoading.set(true)
     this.shopServie.GerImage(this.productForm.value.name as string).subscribe({
-      next: (imageUrlFromAI) => {
-        this.imageUrl.set(imageUrlFromAI);
-        this.productForm.patchValue({ pictureUrl: imageUrlFromAI });
+      next: (imageUrlFromAI: any) => {
+        console.log(imageUrlFromAI.prompt);
+        this.imageUrl.set(imageUrlFromAI.prompt);
+        this.productForm.patchValue({ pictureUrl: imageUrlFromAI.prompt });
       },
       error: (err) => console.log(err),
       complete: () =>{
@@ -109,6 +111,25 @@ export class UpsertProduct {
   deletImage() {
     this.imageUrl.set(DEFAULT_IMAGE_URL);
     this.productForm.patchValue({ pictureUrl: DEFAULT_IMAGE_URL });
+  }
+
+  allFullText() {
+    const name = this.productForm.value.name as string;
+
+    this.isTextLoading.set(true);
+    this.shopServie.GenerateProductText(name).subscribe({
+      next: (data) => {
+        this.productForm.patchValue({
+          description: data.description,
+          price: data.price,
+          type: data.type,
+          brand: data.brand,
+          quantitiyInStock: data.quantityInStock,
+        });
+      },
+      error: (err) => console.log(err),
+      complete: () => this.isTextLoading.set(false),
+    });
   }
 
 }

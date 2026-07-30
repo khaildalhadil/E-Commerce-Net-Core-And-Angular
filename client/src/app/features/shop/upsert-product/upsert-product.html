@@ -6,13 +6,23 @@
 
 
 
-  <div class="card">
-    <div class="card-body">
-            
-      <h2 class="card-title text-3xl justify-center mb-6">
-       Add Product Information
-      </h2>
 
+  <div class="card">
+
+    
+    <div class="card-body">
+      
+      <div class="flex justify-between items-center">
+        <h2 class="card-title text-3xl justify-center mb-6">
+          Add Product Information
+        </h2>
+        
+        <button
+          class="border rounded p-3 cursor-pointer"
+          (click)="allFullText()"
+          [disabled]="isTextLoading()"
+          >{{ isTextLoading() ? 'Loading...' : 'AI Full' }}</button>
+      </div>
 
       <!-- Name -->
       <div class="form-control">
