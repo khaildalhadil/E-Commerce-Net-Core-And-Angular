@@ -14,6 +14,7 @@
           "Microsoft.EntityFrameworkCore": "10.0.10",
           "Microsoft.EntityFrameworkCore.Design": "10.0.10",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.3",
+          "StackExchange.Redis": "3.0.17",
           "System.IdentityModel.Tokens.Jwt": "8.21.0"
         },
         "runtime": {
@@ -702,6 +703,27 @@
           }
         }
       },
+      "RESPite/3.0.17": {
+        "runtime": {
+          "lib/net10.0/RESPite.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.17.2819"
+          }
+        }
+      },
+      "StackExchange.Redis/3.0.17": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.10",
+          "RESPite": "3.0.17",
+          "System.IO.Hashing": "10.0.5"
+        },
+        "runtime": {
+          "lib/net10.0/StackExchange.Redis.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.17.2819"
+          }
+        }
+      },
       "System.CodeDom/6.0.0": {
         "runtime": {
           "lib/net6.0/System.CodeDom.dll": {
@@ -779,6 +801,14 @@
           "lib/net10.0/System.IdentityModel.Tokens.Jwt.dll": {
             "assemblyVersion": "8.21.0.0",
             "fileVersion": "8.21.0.26203"
+          }
+        }
+      },
+      "System.IO.Hashing/10.0.5": {
+        "runtime": {
+          "lib/net10.0/System.IO.Hashing.dll": {
+            "assemblyVersion": "10.0.0.5",
+            "fileVersion": "10.0.526.15411"
           }
         }
       },
@@ -1099,6 +1129,20 @@
       "path": "npgsql.entityframeworkcore.postgresql/10.0.3",
       "hashPath": "npgsql.entityframeworkcore.postgresql.10.0.3.nupkg.sha512"
     },
+    "RESPite/3.0.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-68slEMyRTUNLc75DruEDsEohFmFfNwkHLLtwQ46bobF+8Tl+UXMKM1kM87ihhKy6JdAqy1RrvAfvBWeLmcY9Gg==",
+      "path": "respite/3.0.17",
+      "hashPath": "respite.3.0.17.nupkg.sha512"
+    },
+    "StackExchange.Redis/3.0.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ItAm9lokZ1mWsQLF3u4Yw4eb/gvkX6Rp9bLAe1KUKgKAjPkALoQwTc6jJLtBZoOv9LT7RwvSIXZZb9FF30QhOg==",
+      "path": "stackexchange.redis/3.0.17",
+      "hashPath": "stackexchange.redis.3.0.17.nupkg.sha512"
+    },
     "System.CodeDom/6.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1154,6 +1198,13 @@
       "sha512": "sha512-dKsTkmlpUf/I6g1Aw9joWaZAahXvC0gWGQvkXW1IjZLSefC/4LhQI0tL0VIs64/NZQbl4XnQvLQyu6c7z1pMxg==",
       "path": "system.identitymodel.tokens.jwt/8.21.0",
       "hashPath": "system.identitymodel.tokens.jwt.8.21.0.nupkg.sha512"
+    },
+    "System.IO.Hashing/10.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8IBJWcCT9+e4Bmevm4T7+fQEiAh133KGiz4oiVTgJckd3Q76OFdR1falgn9lpz7+C4HJvogCDJeAa2QmvbeVtg==",
+      "path": "system.io.hashing/10.0.5",
+      "hashPath": "system.io.hashing.10.0.5.nupkg.sha512"
     },
     "Application/1.0.0": {
       "type": "project",

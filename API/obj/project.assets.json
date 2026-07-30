@@ -703,6 +703,15 @@
           }
         }
       },
+      "RESPite/3.0.17": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/RESPite.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/RESPite.dll": {}
+        }
+      },
       "Serilog/4.3.1": {
         "type": "package",
         "compile": {
@@ -887,6 +896,23 @@
         },
         "runtime": {
           "lib/net10.0/Serilog.Sinks.Seq.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "StackExchange.Redis/3.0.17": {
+        "type": "package",
+        "dependencies": {
+          "RESPite": "3.0.17",
+          "System.IO.Hashing": "10.0.5"
+        },
+        "compile": {
+          "lib/net10.0/StackExchange.Redis.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/StackExchange.Redis.dll": {
             "related": ".xml"
           }
         }
@@ -1100,6 +1126,22 @@
           }
         }
       },
+      "System.IO.Hashing/10.0.5": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/System.IO.Hashing.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/System.IO.Hashing.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net8.0/_._": {}
+        }
+      },
       "Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
@@ -1133,6 +1175,7 @@
           "Microsoft.EntityFrameworkCore": "10.0.10",
           "Microsoft.EntityFrameworkCore.Design": "10.0.10",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.3",
+          "StackExchange.Redis": "3.0.17",
           "System.IdentityModel.Tokens.Jwt": "8.21.0"
         },
         "compile": {
@@ -2963,6 +3006,25 @@
         "postgresql.png"
       ]
     },
+    "RESPite/3.0.17": {
+      "sha512": "68slEMyRTUNLc75DruEDsEohFmFfNwkHLLtwQ46bobF+8Tl+UXMKM1kM87ihhKy6JdAqy1RrvAfvBWeLmcY9Gg==",
+      "type": "package",
+      "path": "respite/3.0.17",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net10.0/RESPite.dll",
+        "lib/net461/RESPite.dll",
+        "lib/net472/RESPite.dll",
+        "lib/net6.0/RESPite.dll",
+        "lib/net8.0/RESPite.dll",
+        "lib/netstandard2.0/RESPite.dll",
+        "readme.md",
+        "respite.3.0.17.nupkg.sha512",
+        "respite.nuspec",
+        "seredis.png"
+      ]
+    },
     "Serilog/4.3.1": {
       "sha512": "savYe7h5yRlkqBVOwP8cIRDOdqKiPmYCU4W87JH38sBmcKD5EBoXvQIw6bNEvZ/pTe1gsiye3VFCzBsoppGkXQ==",
       "type": "package",
@@ -3224,6 +3286,31 @@
         "lib/netstandard2.0/Serilog.Sinks.Seq.xml",
         "serilog.sinks.seq.9.1.0.nupkg.sha512",
         "serilog.sinks.seq.nuspec"
+      ]
+    },
+    "StackExchange.Redis/3.0.17": {
+      "sha512": "ItAm9lokZ1mWsQLF3u4Yw4eb/gvkX6Rp9bLAe1KUKgKAjPkALoQwTc6jJLtBZoOv9LT7RwvSIXZZb9FF30QhOg==",
+      "type": "package",
+      "path": "stackexchange.redis/3.0.17",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net10.0/StackExchange.Redis.dll",
+        "lib/net10.0/StackExchange.Redis.xml",
+        "lib/net461/StackExchange.Redis.dll",
+        "lib/net461/StackExchange.Redis.xml",
+        "lib/net472/StackExchange.Redis.dll",
+        "lib/net472/StackExchange.Redis.xml",
+        "lib/net6.0/StackExchange.Redis.dll",
+        "lib/net6.0/StackExchange.Redis.xml",
+        "lib/net8.0/StackExchange.Redis.dll",
+        "lib/net8.0/StackExchange.Redis.xml",
+        "lib/netstandard2.0/StackExchange.Redis.dll",
+        "lib/netstandard2.0/StackExchange.Redis.xml",
+        "seredis.png",
+        "stackexchange.redis.3.0.17.nupkg.sha512",
+        "stackexchange.redis.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore/10.2.3": {
@@ -3515,6 +3602,35 @@
         "system.identitymodel.tokens.jwt.nuspec"
       ]
     },
+    "System.IO.Hashing/10.0.5": {
+      "sha512": "8IBJWcCT9+e4Bmevm4T7+fQEiAh133KGiz4oiVTgJckd3Q76OFdR1falgn9lpz7+C4HJvogCDJeAa2QmvbeVtg==",
+      "type": "package",
+      "path": "system.io.hashing/10.0.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.IO.Hashing.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net8.0/_._",
+        "buildTransitive/netcoreapp2.0/System.IO.Hashing.targets",
+        "lib/net10.0/System.IO.Hashing.dll",
+        "lib/net10.0/System.IO.Hashing.xml",
+        "lib/net462/System.IO.Hashing.dll",
+        "lib/net462/System.IO.Hashing.xml",
+        "lib/net8.0/System.IO.Hashing.dll",
+        "lib/net8.0/System.IO.Hashing.xml",
+        "lib/net9.0/System.IO.Hashing.dll",
+        "lib/net9.0/System.IO.Hashing.xml",
+        "lib/netstandard2.0/System.IO.Hashing.dll",
+        "lib/netstandard2.0/System.IO.Hashing.xml",
+        "system.io.hashing.10.0.5.nupkg.sha512",
+        "system.io.hashing.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "Application/1.0.0": {
       "type": "project",
       "path": "../Application/Application.csproj",
@@ -3548,23 +3664,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {},
+    "C:\\Users\\khail\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\API\\obj\\",
+      "projectPath": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\API\\API.csproj",
+      "packagesPath": "C:\\Users\\khail\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\khail\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3580,11 +3696,11 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Domain\\Domain.csproj"
+            "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj"
             },
-            "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Infrastructure\\Infrastructure.csproj"
+            "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

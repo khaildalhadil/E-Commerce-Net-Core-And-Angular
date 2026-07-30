@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Application\\Application.csproj": {
+    "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Application\\obj\\",
+        "projectPath": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\khail\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\khail\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,8 +33,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Domain\\Domain.csproj"
+              "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj"
               }
             }
           }
@@ -349,20 +349,20 @@
         }
       }
     },
-    "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Domain\\Domain.csproj": {
+    "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\khail\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\khail\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -696,20 +696,20 @@
         }
       }
     },
-    "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\khail\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\khail\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -725,11 +725,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Application\\Application.csproj"
+              "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Application\\Application.csproj"
               },
-              "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\HP\\source\\repos\\E-Commerce-Net-Core-AndAngular\\Domain\\Domain.csproj"
+              "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\khail\\source\\repos\\E-Commerce-Net-Core-And-Angular\\Domain\\Domain.csproj"
               }
             }
           }
@@ -766,6 +766,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[10.0.3, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[3.0.17, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",

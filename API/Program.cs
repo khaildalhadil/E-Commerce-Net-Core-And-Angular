@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Npgsql;
 using Serilog;
+using StackExchange.Redis;
 using System.Text;
 
 Log.Logger = new LoggerConfiguration()
@@ -108,20 +109,20 @@ try
     })
         .AddEntityFrameworkStores<StoreContext>();
 
-    var tokenKey = builder.Configuration["Token:Key"]
-        ?? throw new InvalidOperationException("Token:Key is missing from configuration");
+    //var tokenKey = builder.Configuration["Token:Key"]
+    //    ?? throw new InvalidOperationException("Token:Key is missing from configuration");
 
-    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-        .AddJwtBearer(options =>
-        {
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey)),
-                ValidateIssuer = false,
-                ValidateAudience = false,
-            };
-        });
+    //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    //    .AddJwtBearer(options =>
+    //    {
+    //        options.TokenValidationParameters = new TokenValidationParameters
+    //        {
+    //            ValidateIssuerSigningKey = true,
+    //            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey)),
+    //            ValidateIssuer = false,
+    //            ValidateAudience = false,
+    //        };
+    //    });
 
 
     //// loggen config
@@ -133,6 +134,22 @@ try
 
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
+
+    // connet with Redis
+    builder.Services.AddSingleton<IConnectionMultiplexer>(config =>
+    {
+        var connString = builder.Configuration.GetConnectionString("Redis");
+        if(connString is null)
+        {
+            Log.Error("Cannot get redis connection string");
+            throw new Exception("Cannot get redis connection string");
+        }
+
+        var configuration = ConfigurationOptions.Parse(connString, true);
+        return ConnectionMultiplexer.Connect(configuration);
+    });
+
+    builder.Services.AddSingleton<ICartService, CartService>();
 
     var app = builder.Build();
 
