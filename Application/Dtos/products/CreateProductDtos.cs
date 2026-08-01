@@ -5,10 +5,10 @@ namespace Application.Dtos.products;
 public class CreateProductDtos
 {
     [Required]
-    [Length(30, 2)]
+    [StringLength(40, MinimumLength =2)]
     public string Name { get; set; } = string.Empty;
     [Required]
-    [Length(30, 2)]
+    [StringLength(40, MinimumLength = 2)]
     public string Description { get; set; } = string.Empty;
 
     [Range(0.001, double.MaxValue, ErrorMessage = "Price must be greater then 0")]

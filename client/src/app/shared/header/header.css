@@ -12,3 +12,8 @@
     height: 32px;
     color: black
 }
+
+.active-link {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}

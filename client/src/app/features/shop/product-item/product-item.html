@@ -1,18 +1,21 @@
 @if (product) {
 
+	
+	
 	<mat-card class="example-card" appearance="outlined">
+		<a [routerLink]="['/product', product.id]">
+			<img mat-card-image [src]="product.pictureUrl" [alt]="product.name">
 
-		<img mat-card-image src="https://material.angular.dev/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-
-		<mat-card-content class="mt-2">
-			<h2 class="text-sm font-semibold uppercase" >
-				{{product.name}}
-			</h2>
-			<p class="font-light">{{product.price | currency}}</p>
-		</mat-card-content>
+			<mat-card-content class="mt-2">
+				<h2 class="text-sm font-semibold uppercase" >
+					{{product.name}}
+				</h2>
+				<p class="font-bold">{{product.price | number:'1.3-3'}} OM</p>
+			</mat-card-content>
+		</a>
 
 		<mat-card-actions>
-			<button class="w-full" mat-stroked-button>
+			<button class="w-full" mat-stroked-button (click)="addToCart()">
 				<mat-icon>add_shopping_cart</mat-icon>
 				Add to cart
 			</button>

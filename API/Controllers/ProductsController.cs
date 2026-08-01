@@ -7,7 +7,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]/[action]")]
-public class ProductsController(IProductService _productService) : ControllerBase
+public class ProductsController(IProductService _productService, ILogger<ProductsController> logger) : ControllerBase
 {
 
     [HttpGet]
@@ -19,6 +19,9 @@ public class ProductsController(IProductService _productService) : ControllerBas
 
         if (allProduct.Count == 0)
         {
+            logger.LogInformation(
+                "No products matched filters Brand={Brand} Type={Type} Sort={Sort}",
+                brand, type, sort);
             return NotFound(new {Message = "You Don't Have Any Product Yet"});
         }
 
@@ -35,6 +38,7 @@ public class ProductsController(IProductService _productService) : ControllerBas
 
         if(product is null)
         {
+            logger.LogWarning("Product {ProductId} not found", id);
             return NotFound();
         }
 
@@ -52,22 +56,32 @@ public class ProductsController(IProductService _productService) : ControllerBas
 
         if (await _productService.SaveChangesAsync())
         {
+            logger.LogInformation(
+                "Created product {ProductId} ({ProductName}) brand {Brand}",
+                product.Id, product.Name, product.Brand);
             return CreatedAtAction("GetProduct", new {id = product.Id}, product);
         }
 
+        logger.LogWarning("Create product {ProductName} persisted no changes", product.Name);
         return BadRequest();
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> UpdateProduct(int id, Product product)
+    public async Task<IActionResult> UpdateProduct(int id, CreateProductDtos createProductDtos)
     {
         if (!await _productService.ProductExists(id))
         {
+            logger.LogWarning("Update rejected: product {ProductId} not found", id);
             return NotFound();
         }
 
+        var product = CreateProductDtos.ToEntity(createProductDtos);
+
         if (product.Id != id)
         {
+            logger.LogWarning(
+                "Update rejected: route id {RouteId} does not match body id {BodyId}",
+                id, product.Id);
             return BadRequest("Cannt update this product");
         }
 
@@ -76,9 +90,11 @@ public class ProductsController(IProductService _productService) : ControllerBas
 
         if (await _productService.SaveChangesAsync())
         {
+            logger.LogInformation("Updated product {ProductId}", id);
             return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
 
+        logger.LogWarning("Update of product {ProductId} persisted no changes", id);
         return BadRequest();
     }
 
@@ -89,6 +105,7 @@ public class ProductsController(IProductService _productService) : ControllerBas
 
         if (!await _productService.ProductExists(id) || product is null)
         {
+            logger.LogWarning("Delete rejected: product {ProductId} not found", id);
             return NotFound();
         }
 
@@ -97,9 +114,11 @@ public class ProductsController(IProductService _productService) : ControllerBas
 
         if (await _productService.SaveChangesAsync())
         {
+            logger.LogInformation("Deleted product {ProductId} ({ProductName})", id, product.Name);
             return NoContent();
         }
 
+        logger.LogWarning("Delete of product {ProductId} persisted no changes", id);
         return BadRequest();
 
 

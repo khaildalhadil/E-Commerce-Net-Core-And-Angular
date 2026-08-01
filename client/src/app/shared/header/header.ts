@@ -1,12 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatBadge } from '@angular/material/badge';
 import { MatButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { Router, RouterLink, RouterLinkActive } from "@angular/router";
+import { AccountService } from '../../services/AccountService';
+import { CartService } from '../../services/cartService';
 
 @Component({
   selector: 'app-header',
-  imports: [MatIconModule, MatButton, MatBadge],
+  imports: [MatIconModule, MatButton, MatBadge, RouterLink, RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {}
+export class Header {
+  accountService = inject(AccountService);
+  cartService = inject(CartService);
+  private router = inject(Router);
+
+  logout() {
+    this.accountService.logout();
+    this.router.navigateByUrl('/');
+  }
+}

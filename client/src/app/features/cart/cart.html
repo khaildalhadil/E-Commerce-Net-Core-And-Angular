@@ -1,0 +1,72 @@
+@if (cartService.cart(); as cart) {
+  @if (cart.items.length > 0) {
+    <div class="flex flex-col lg:flex-row gap-6 mt-6">
+
+      <div class="flex-1 flex flex-col gap-3">
+        @for (item of cart.items; track item.productId) {
+          <mat-card class="flex flex-row items-center gap-4 p-3" appearance="outlined">
+            <img [src]="item.pictureUrl" [alt]="item.productName" class="w-20 h-20 object-cover rounded" />
+
+            <div class="flex-1">
+              <h3 class="font-semibold uppercase text-sm">{{ item.productName }}</h3>
+              <p class="text-xs text-gray-500">{{ item.brand }} / {{ item.type }}</p>
+              <p class="font-bold mt-1">{{ item.price | number:'1.3-3' }} OM</p>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button mat-icon-button (click)="cartService.decrementItemQuantity(item.productId)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <span class="w-6 text-center">{{ item.quantity }}</span>
+              <button mat-icon-button (click)="cartService.incrementItemQuantity(item.productId)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+
+            <p class="font-bold w-24 text-right">{{ item.price * item.quantity | number:'1.3-3' }} OM</p>
+
+            <button mat-icon-button color="warn" (click)="cartService.removeItemFromCart(item.productId)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card>
+        }
+      </div>
+
+      <mat-card class="w-full lg:w-80 h-fit p-4" appearance="outlined">
+        <h2 class="text-lg font-semibold mb-4">Order summary</h2>
+
+        <div class="flex justify-between text-sm mb-2">
+          <span>Items ({{ cartService.itemCount() }})</span>
+          <span>{{ cartService.subtotal() | number:'1.3-3' }} OM</span>
+        </div>
+
+        <div class="flex justify-between font-bold text-base border-t pt-2 mt-2">
+          <span>Total</span>
+          <span>{{ cartService.subtotal() | number:'1.3-3' }} OM</span>
+        </div>
+
+        <button mat-flat-button color="primary" class="w-full mt-4">Checkout</button>
+        <a routerLink="/" mat-stroked-button class="w-full mt-2">Continue shopping</a>
+      </mat-card>
+
+    </div>
+  } @else {
+    <div class="flex flex-col items-center gap-4 mt-20">
+      <mat-icon class="!text-6xl !w-16 !h-16 text-gray-400">shopping_cart</mat-icon>
+      <p class="text-lg font-semibold">Your cart is empty</p>
+      <a routerLink="/" mat-stroked-button>
+        <mat-icon>arrow_back</mat-icon>
+        Back to shop
+      </a>
+    </div>
+  }
+} @else {
+  <div class="flex flex-col items-center gap-4 mt-20">
+    <mat-icon class="!text-6xl !w-16 !h-16 text-gray-400">shopping_cart</mat-icon>
+    <p class="text-lg font-semibold">Your cart is empty</p>
+    <a routerLink="/" mat-stroked-button>
+      <mat-icon>arrow_back</mat-icon>
+      Back to shop
+    </a>
+  </div>
+}

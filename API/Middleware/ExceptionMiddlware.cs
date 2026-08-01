@@ -1,0 +1,43 @@
+using API.Errors;
+using System.Net;
+using System.Text.Json;
+
+namespace API.Middleware;
+
+public class ExceptionMiddlware(IHostEnvironment env, RequestDelegate next, ILogger<ExceptionMiddlware> logger)
+{
+    public async Task InvokeAsync(HttpContext context)
+    {
+        try
+        {
+            await next(context);
+        } catch (Exception ex) {
+
+            // Every unhandled exception is logged exactly once, here, with the exception
+            // object attached so Seq keeps the full type/message/stack trace.
+            logger.LogError(
+                ex,
+                "Unhandled {ExceptionType} on {RequestMethod} {RequestPath} (TraceId {TraceId})",
+                ex.GetType().Name,
+                context.Request.Method,
+                context.Request.Path,
+                context.TraceIdentifier);
+
+            await HandleExceptionAsync(context, ex, env);
+        }
+    }
+
+    private static Task HandleExceptionAsync(HttpContext context, Exception ex, IHostEnvironment env)
+    {
+        context.Response.ContentType = "Application/json";
+        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+        var response = env.IsDevelopment() ?
+            new ApiErrorResponse(context.Response.StatusCode, ex.Message, ex.StackTrace)
+                : new ApiErrorResponse(context.Response.StatusCode, ex.Message, "Internal server error");
+
+        var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+        var json = JsonSerializer.Serialize(response, options);
+        return context.Response.WriteAsync(json);
+    }
+}
