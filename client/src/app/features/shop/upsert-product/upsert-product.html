@@ -37,8 +37,14 @@
           type="text"
           formControlName="name"
           placeholder="Enter product name"
-          class="input input-bordered w-full border border-gray-400 p-3 rounded"
+          class="input input-bordered w-full border p-3 rounded"
+          [class.border-red-500]="isInvalid('name')"
+          [class.border-gray-400]="!isInvalid('name')"
         />
+
+        @if (isInvalid('name')) {
+          <span class="text-red-500 text-sm mt-1">{{ getErrorMessage('name') }}</span>
+        }
 
       </div>
 
@@ -56,8 +62,14 @@
         <textarea
           formControlName="description"
           placeholder="Enter description"
-          class="textarea textarea-bordered w-full  border border-gray-400 p-3 rounded">
+          class="textarea textarea-bordered w-full  border p-3 rounded"
+          [class.border-red-500]="isInvalid('description')"
+          [class.border-gray-400]="!isInvalid('description')">
         </textarea>
+
+        @if (isInvalid('description')) {
+          <span class="text-red-500 text-sm mt-1">{{ getErrorMessage('description') }}</span>
+        }
 
       </div>
 
@@ -76,8 +88,14 @@
           type="number"
           formControlName="price"
           placeholder="Enter price"
-          class="input input-bordered w-full border border-gray-400 p-3 rounded"
+          class="input input-bordered w-full border p-3 rounded"
+          [class.border-red-500]="isInvalid('price')"
+          [class.border-gray-400]="!isInvalid('price')"
         />
+
+        @if (isInvalid('price')) {
+          <span class="text-red-500 text-sm mt-1">{{ getErrorMessage('price') }}</span>
+        }
 
       </div>
 
@@ -114,8 +132,14 @@
           type="text"
           formControlName="pictureUrl"
           placeholder="Enter image URL"
-          class="input input-bordered w-full border border-gray-400 p-3 rounded"
+          class="input input-bordered w-full border p-3 rounded"
+          [class.border-red-500]="isInvalid('pictureUrl')"
+          [class.border-gray-400]="!isInvalid('pictureUrl')"
         />
+
+        @if (isInvalid('pictureUrl')) {
+          <span class="text-red-500 text-sm mt-1">{{ getErrorMessage('pictureUrl') }}</span>
+        }
 
       </div>
 
@@ -134,8 +158,14 @@
           type="text"
           formControlName="type"
           placeholder="Enter product type"
-          class="input input-bordered w-full border border-gray-400 p-3 rounded"
+          class="input input-bordered w-full border p-3 rounded"
+          [class.border-red-500]="isInvalid('type')"
+          [class.border-gray-400]="!isInvalid('type')"
         />
+
+        @if (isInvalid('type')) {
+          <span class="text-red-500 text-sm mt-1">{{ getErrorMessage('type') }}</span>
+        }
 
       </div>
 
@@ -154,8 +184,14 @@
           type="text"
           formControlName="brand"
           placeholder="Enter brand"
-          class="input input-bordered w-full border border-gray-400 p-3 rounded"
+          class="input input-bordered w-full border p-3 rounded"
+          [class.border-red-500]="isInvalid('brand')"
+          [class.border-gray-400]="!isInvalid('brand')"
         />
+
+        @if (isInvalid('brand')) {
+          <span class="text-red-500 text-sm mt-1">{{ getErrorMessage('brand') }}</span>
+        }
 
       </div>
 
@@ -174,27 +210,38 @@
           type="number"
           formControlName="quantitiyInStock"
           placeholder="Enter quantity"
-          class="input input-bordered w-full border border-gray-400 p-3 rounded"
+          class="input input-bordered w-full border p-3 rounded"
+          [class.border-red-500]="isInvalid('quantitiyInStock')"
+          [class.border-gray-400]="!isInvalid('quantitiyInStock')"
         />
+
+        @if (isInvalid('quantitiyInStock')) {
+          <span class="text-red-500 text-sm mt-1">{{ getErrorMessage('quantitiyInStock') }}</span>
+        }
 
       </div>
 
 
 
+      @if (productForm.invalid && productForm.touched) {
+        <div class="text-red-500 text-sm mt-4">
+          يوجد أخطاء في النموذج، الرجاء تصحيحها قبل الحفظ
+        </div>
+      }
+
       <!-- Buttons -->
       <div class="card-actions justify-end mt-8">
 
-        <!-- <button 
-          type="reset" 
-          class="btn btn-outline">
-          Reset
-        </button> -->
+        <button
+          type="button"
+          class="btn btn-outline border rounded p-2 px-3 cursor-pointer"
+          (click)="clearForm()">
+          Clear
+        </button>
 
-
-        <button 
-          type="submit" 
-          class="btn btn-primary bg-blue-800 px-3 rounded p-2"
-          /* [disabled]="productForm.invalid" */
+        <button
+          type="submit"
+          class="btn btn-primary bg-blue-800 px-3 rounded p-2 text-gray-100 font-bold"
           >
 
           <!-- <mat-icon>save</mat-icon> -->

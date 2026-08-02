@@ -87,9 +87,38 @@ export class UpsertProduct {
 
       })
     } else {
-      console.log(this.productForm.value)
-      console.log(this.productForm.valid)
+      this.productForm.markAllAsTouched();
     }
+  }
+
+  clearForm() {
+    this.productForm.reset({
+      name: '',
+      description: '',
+      price: 0,
+      pictureUrl: DEFAULT_IMAGE_URL,
+      type: '',
+      brand: '',
+      quantitiyInStock: 0,
+    });
+    this.imageUrl.set(DEFAULT_IMAGE_URL);
+  }
+
+  isInvalid(controlName: string): boolean {
+    const control = this.productForm.get(controlName);
+    return !!control && control.invalid && (control.touched || control.dirty);
+  }
+
+  getErrorMessage(controlName: string): string {
+    const control = this.productForm.get(controlName);
+    if (!control || !control.errors) return '';
+
+    if (control.errors['required']) return 'هذا الحقل مطلوب';
+    if (control.errors['minlength']) return `الحد الأدنى للطول هو ${control.errors['minlength'].requiredLength} أحرف`;
+    if (control.errors['maxlength']) return `الحد الأقصى للطول هو ${control.errors['maxlength'].requiredLength} أحرف`;
+    if (control.errors['min'] !== undefined) return `يجب أن تكون القيمة ${control.errors['min'].min} أو أكثر`;
+
+    return 'قيمة غير صالحة';
   }
 
   gerImage() {

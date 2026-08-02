@@ -21,8 +21,8 @@ public class TextController(
 
     private async Task<ProductTextResponse> GenerateProductTextAsync(string productName)
     {
-        var apiKey = _configuration["OpenAI:ApiKey"]
-            ?? throw new InvalidOperationException("OpenAI:ApiKey is not configured.");
+        var apiKey = _configuration["OpenAIApiKey"]
+            ?? throw new InvalidOperationException("OpenAIApiKey is not configured.");
 
         var http = _httpClientFactory.CreateClient("OpenAI");
 
