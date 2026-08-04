@@ -3,7 +3,7 @@
     "Name": "iPhone 16 Pro 256GB",
     "Description": "Apple iPhone 16 Pro with A18 Pro chip.",
     "Price": 499.900,
-    "PictureUrl": "https://picsum.photos/seed/iphone16pro/500/500",
+    "PictureUrl": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=500&fit=crop&auto=format&q=80",
     "Type": "Smartphones",
     "Brand": "Apple",
     "QuantitiyInStock": 25
@@ -12,7 +12,7 @@
     "Name": "Samsung Galaxy S25 Ultra",
     "Description": "Flagship Android smartphone.",
     "Price": 459.900,
-    "PictureUrl": "https://picsum.photos/seed/galaxys25/500/500",
+    "PictureUrl": "https://images.unsplash.com/photo-1592890288564-76628a30a657?w=500&h=500&fit=crop&auto=format&q=80",
     "Type": "Smartphones",
     "Brand": "Samsung",
     "QuantitiyInStock": 30
@@ -21,7 +21,7 @@
     "Name": "MacBook Air M4",
     "Description": "Apple laptop with M4 chip.",
     "Price": 649.900,
-    "PictureUrl": "https://picsum.photos/seed/macbookm4/500/500",
+    "PictureUrl": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=500&h=500&fit=crop&auto=format&q=80",
     "Type": "Laptops",
     "Brand": "Apple",
     "QuantitiyInStock": 15
@@ -30,7 +30,7 @@
     "Name": "Dell XPS 14",
     "Description": "Premium Windows laptop.",
     "Price": 699.900,
-    "PictureUrl": "https://picsum.photos/seed/dellxps14/500/500",
+    "PictureUrl": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=500&fit=crop&auto=format&q=80",
     "Type": "Laptops",
     "Brand": "Dell",
     "QuantitiyInStock": 18
@@ -39,7 +39,7 @@
     "Name": "Sony WH-1000XM6",
     "Description": "Wireless noise-cancelling headphones.",
     "Price": 159.900,
-    "PictureUrl": "https://picsum.photos/seed/sonyheadphones/500/500",
+    "PictureUrl": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop&auto=format&q=80",
     "Type": "Audio",
     "Brand": "Sony",
     "QuantitiyInStock": 40
@@ -48,7 +48,7 @@
     "Name": "AirPods Pro 2",
     "Description": "Apple wireless earbuds.",
     "Price": 99.900,
-    "PictureUrl": "https://picsum.photos/seed/airpodspro2/500/500",
+    "PictureUrl": "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=500&h=500&fit=crop&auto=format&q=80",
     "Type": "Audio",
     "Brand": "Apple",
     "QuantitiyInStock": 55
@@ -57,7 +57,7 @@
     "Name": "Apple Watch Series 10",
     "Description": "Smartwatch with health tracking.",
     "Price": 179.900,
-    "PictureUrl": "https://picsum.photos/seed/applewatch10/500/500",
+    "PictureUrl": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500&h=500&fit=crop&auto=format&q=80",
     "Type": "Wearables",
     "Brand": "Apple",
     "QuantitiyInStock": 28
@@ -66,7 +66,7 @@
     "Name": "PlayStation 5 Slim",
     "Description": "Next-generation gaming console.",
     "Price": 239.900,
-    "PictureUrl": "https://picsum.photos/seed/ps5slim/500/500",
+    "PictureUrl": "https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=500&h=500&fit=crop&auto=format&q=80",
     "Type": "Gaming",
     "Brand": "Sony",
     "QuantitiyInStock": 14
@@ -75,7 +75,7 @@
     "Name": "Xbox Series X",
     "Description": "Powerful gaming console.",
     "Price": 229.900,
-    "PictureUrl": "https://picsum.photos/seed/xboxseriesx/500/500",
+    "PictureUrl": "https://images.unsplash.com/photo-1585620385456-4759f9b5c7d9?w=500&h=500&fit=crop&auto=format&q=80",
     "Type": "Gaming",
     "Brand": "Microsoft",
     "QuantitiyInStock": 18
@@ -84,7 +84,7 @@
     "Name": "Samsung 27-inch 4K Monitor",
     "Description": "Ultra HD IPS monitor.",
     "Price": 129.900,
-    "PictureUrl": "https://picsum.photos/seed/samsungmonitor/500/500",
+    "PictureUrl": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&h=500&fit=crop&auto=format&q=80",
     "Type": "Monitors",
     "Brand": "Samsung",
     "QuantitiyInStock": 22

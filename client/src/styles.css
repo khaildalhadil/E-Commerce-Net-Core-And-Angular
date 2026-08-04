@@ -1,3 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+/* Shared design tokens for the shop surfaces (product cards, cart, details). */
+:root {
+	--ui-paper: #ffffff;
+	--ui-tray: #eef1f4;
+	--ui-ink: #101418;
+	--ui-muted: #6b7580;
+	--ui-rule: #e3e7eb;
+	--ui-rule-hover: #c7ced5;
+	--ui-ok: #1fa97a;
+	--ui-low: #8f6113;
+	--ui-low-dot: #e0a32e;
+
+	--ui-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+	--ui-display: 'Space Grotesk', 'Roboto', system-ui, sans-serif;
+}

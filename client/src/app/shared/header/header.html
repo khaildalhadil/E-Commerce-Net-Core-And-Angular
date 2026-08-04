@@ -10,21 +10,20 @@
         </a>
         <nav class="flex gap-3 my-2 uppercase text-xl">
             <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Home</a>
-            <a routerLink="/upsert" routerLinkActive="active-link">Create</a>
-            <a routerLink="/cart" routerLinkActive="active-link">Cart</a>
+            <!-- <a routerLink="/upsert" routerLinkActive="active-link">Create</a> -->
         </nav>
 
         <div class="flex gap-3 align-middle cursor-pointer items-center">
             <a routerLink="/cart" [matBadge]="cartService.itemCount()" [matBadgeHidden]="cartService.itemCount() === 0" matBadgeSize="large" class="custom-badge mt-2">
                 <mat-icon>shopping_cart</mat-icon>
             </a>
-            @if (accountService.currentUser(); as user) {
+            <!-- @if (accountService.currentUser(); as user) {
                 <span class="text-sm font-semibold normal-case">Hi, {{user.displayName}}</span>
                 <button mat-stroked-button (click)="logout()">Logout</button>
             } @else {
                 <button mat-stroked-button routerLink="/login">Login</button>
                 <button mat-stroked-button routerLink="/register">Register</button>
-            }
+            } -->
         </div>
     </div>
 </header>

@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5130/api/Products/GetProducts --max-time 3)",
-      "Bash(powershell -NoProfile -Command \"Get-NetTCPConnection -LocalPort 5130 -State Listen -ErrorAction SilentlyContinue | Select-Object LocalPort,OwningProcess\")",
-      "Bash(curl -s -X POST http://localhost:5130/api/Account/Register -H \"Content-Type: application/json\" -d '{\"displayName\":\"Test User\",\"email\":\"smoketest@example.com\",\"password\":\"Password123\"}' -w \"\\\\nHTTP_STATUS:%{http_code}\\\\n\" --max-time 10)"
-    ]
-  }
-}

@@ -1,0 +1,199 @@
+:host {
+	display: block;
+	height: 100%;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 10px 10px 12px;
+	background: var(--ui-paper);
+	border: 1px solid var(--ui-rule);
+	border-radius: 10px;
+	transition: border-color 0.25s ease;
+}
+
+.card:hover {
+	border-color: var(--ui-rule-hover);
+}
+
+/* --- image --------------------------------------------------------- */
+
+.card__link {
+	display: block;
+	color: inherit;
+	text-decoration: none;
+}
+
+.card__link:focus-visible {
+	outline: 2px solid var(--ui-ink);
+	outline-offset: 3px;
+	border-radius: 8px;
+}
+
+.card__tray {
+	aspect-ratio: 1 / 1;
+	background: var(--ui-tray);
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.card__photo {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+.card:hover .card__photo {
+	transform: scale(1.04);
+}
+
+.card--sold-out .card__photo {
+	filter: saturate(0.25);
+	opacity: 0.75;
+}
+
+/* --- naming -------------------------------------------------------- */
+
+.card__brand {
+	margin: 12px 0 0;
+	font-family: var(--ui-mono);
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--ui-muted);
+}
+
+.card__name {
+	margin: 4px 0 0;
+	font-family: var(--ui-display);
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 1.3;
+	letter-spacing: -0.01em;
+	color: var(--ui-ink);
+
+	/* Two lines every time, so the price rows line up across the grid. */
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	min-height: 39px;
+}
+
+.card__link:hover .card__name {
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 3px;
+}
+
+/* --- stock --------------------------------------------------------- */
+
+.card__stock {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	margin: 10px 0 0;
+	font-family: var(--ui-mono);
+	font-size: 11px;
+	color: var(--ui-muted);
+}
+
+.card__led {
+	flex: none;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: #c2c9d0;
+}
+
+.card--ok .card__led {
+	background: var(--ui-ok);
+	box-shadow: 0 0 0 3px rgba(31, 169, 122, 0.16);
+}
+
+.card--low .card__led {
+	background: var(--ui-low-dot);
+	box-shadow: 0 0 0 3px rgba(224, 163, 46, 0.18);
+}
+
+.card--low .card__stock {
+	color: var(--ui-low);
+}
+
+/* --- price and action ---------------------------------------------- */
+
+.card__footer {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 8px;
+	margin-top: auto;
+	padding-top: 12px;
+	border-top: 1px solid var(--ui-rule);
+}
+
+.card__add {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	flex: none;
+	min-height: 38px;
+	padding: 0 13px;
+	font-family: var(--ui-mono);
+	font-size: 11px;
+	font-weight: 500;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--ui-ink);
+	background: transparent;
+	border: 1px solid var(--ui-ink);
+	border-radius: 999px;
+	cursor: pointer;
+	transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.card__add svg {
+	width: 14px;
+	height: 14px;
+}
+
+.card__add:hover:not(:disabled) {
+	background: var(--ui-ink);
+	color: #fff;
+}
+
+.card__add:focus-visible {
+	outline: 2px solid var(--ui-ink);
+	outline-offset: 2px;
+}
+
+.card__add:disabled {
+	color: #a8b0b8;
+	border-color: var(--ui-rule);
+	cursor: not-allowed;
+}
+
+@media (pointer: coarse) {
+	.card__add {
+		min-height: 44px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.card,
+	.card__photo,
+	.card__add {
+		transition: none;
+	}
+
+	.card:hover .card__photo {
+		transform: none;
+	}
+}

@@ -1,72 +1,104 @@
-@if (cartService.cart(); as cart) {
-  @if (cart.items.length > 0) {
-    <div class="flex flex-col lg:flex-row gap-6 mt-6">
+@if (items().length > 0) {
 
-      <div class="flex-1 flex flex-col gap-3">
-        @for (item of cart.items; track item.productId) {
-          <mat-card class="flex flex-row items-center gap-4 p-3" appearance="outlined">
-            <img [src]="item.pictureUrl" [alt]="item.productName" class="w-20 h-20 object-cover rounded" />
+	<div class="cart">
 
-            <div class="flex-1">
-              <h3 class="font-semibold uppercase text-sm">{{ item.productName }}</h3>
-              <p class="text-xs text-gray-500">{{ item.brand }} / {{ item.type }}</p>
-              <p class="font-bold mt-1">{{ item.price | number:'1.3-3' }} OM</p>
-            </div>
+		<header class="cart__head">
+			<h1 class="cart__title">Cart</h1>
+			<p class="cart__count">{{ cartService.itemCount() }} {{ cartService.itemCount() === 1 ? 'item' : 'items' }}</p>
+		</header>
 
-            <div class="flex items-center gap-2">
-              <button mat-icon-button (click)="cartService.decrementItemQuantity(item.productId)">
-                <mat-icon>remove</mat-icon>
-              </button>
-              <span class="w-6 text-center">{{ item.quantity }}</span>
-              <button mat-icon-button (click)="cartService.incrementItemQuantity(item.productId)">
-                <mat-icon>add</mat-icon>
-              </button>
-            </div>
+		<div class="cart__body">
 
-            <p class="font-bold w-24 text-right">{{ item.price * item.quantity | number:'1.3-3' }} OM</p>
+			<ul class="lines">
+				@for (item of items(); track item.productId) {
+					<li class="line">
+						<a class="line__photo" [routerLink]="['/product', item.productId]">
+							<img [src]="item.pictureUrl" [alt]="item.productName" loading="lazy" decoding="async">
+						</a>
 
-            <button mat-icon-button color="warn" (click)="cartService.removeItemFromCart(item.productId)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </mat-card>
-        }
-      </div>
+						<div class="line__body">
+							<p class="line__brand">{{ item.brand }}</p>
+							<h2 class="line__name">
+								<a [routerLink]="['/product', item.productId]">{{ item.productName }}</a>
+							</h2>
+							<p class="line__unit"><app-price [value]="item.price" size="sm" /> each</p>
+						</div>
 
-      <mat-card class="w-full lg:w-80 h-fit p-4" appearance="outlined">
-        <h2 class="text-lg font-semibold mb-4">Order summary</h2>
+						<div class="line__controls">
+							<div class="stepper">
+								<button
+									type="button"
+									class="stepper__btn"
+									[disabled]="item.quantity <= 1"
+									[attr.aria-label]="'Decrease ' + item.productName + ' quantity'"
+									(click)="cartService.decrementItemQuantity(item.productId)">
+									<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+										<path d="M6 12h12" />
+									</svg>
+								</button>
 
-        <div class="flex justify-between text-sm mb-2">
-          <span>Items ({{ cartService.itemCount() }})</span>
-          <span>{{ cartService.subtotal() | number:'1.3-3' }} OM</span>
-        </div>
+								<span class="stepper__value" aria-live="polite">{{ item.quantity }}</span>
 
-        <div class="flex justify-between font-bold text-base border-t pt-2 mt-2">
-          <span>Total</span>
-          <span>{{ cartService.subtotal() | number:'1.3-3' }} OM</span>
-        </div>
+								<button
+									type="button"
+									class="stepper__btn"
+									[attr.aria-label]="'Increase ' + item.productName + ' quantity'"
+									(click)="cartService.incrementItemQuantity(item.productId)">
+									<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+										<path d="M12 6v12M6 12h12" />
+									</svg>
+								</button>
+							</div>
 
-        <button mat-flat-button color="primary" class="w-full mt-4">Checkout</button>
-        <a routerLink="/" mat-stroked-button class="w-full mt-2">Continue shopping</a>
-      </mat-card>
+							<app-price class="line__total" [value]="item.price * item.quantity" size="md" />
 
-    </div>
-  } @else {
-    <div class="flex flex-col items-center gap-4 mt-20">
-      <mat-icon class="!text-6xl !w-16 !h-16 text-gray-400">shopping_cart</mat-icon>
-      <p class="text-lg font-semibold">Your cart is empty</p>
-      <a routerLink="/" mat-stroked-button>
-        <mat-icon>arrow_back</mat-icon>
-        Back to shop
-      </a>
-    </div>
-  }
+							<button
+								type="button"
+								class="line__remove"
+								[attr.aria-label]="'Remove ' + item.productName + ' from cart'"
+								(click)="cartService.removeItemFromCart(item.productId)">
+								<svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+									<path d="M6 6l12 12M18 6L6 18" />
+								</svg>
+							</button>
+						</div>
+					</li>
+				}
+			</ul>
+
+			<aside class="summary">
+				<h2 class="summary__title">Order summary</h2>
+
+				<div class="summary__row">
+					<span>Items</span>
+					<span class="summary__figure">{{ cartService.itemCount() }}</span>
+				</div>
+
+				<div class="summary__row summary__row--total">
+					<span>Total</span>
+					<app-price [value]="cartService.subtotal()" size="lg" />
+				</div>
+
+				<button type="button" class="summary__checkout">Checkout</button>
+				<a routerLink="/" class="summary__back">Continue shopping</a>
+			</aside>
+
+		</div>
+	</div>
+
 } @else {
-  <div class="flex flex-col items-center gap-4 mt-20">
-    <mat-icon class="!text-6xl !w-16 !h-16 text-gray-400">shopping_cart</mat-icon>
-    <p class="text-lg font-semibold">Your cart is empty</p>
-    <a routerLink="/" mat-stroked-button>
-      <mat-icon>arrow_back</mat-icon>
-      Back to shop
-    </a>
-  </div>
+
+	<div class="empty">
+		<div class="empty__mark" aria-hidden="true">
+			<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 8H6" />
+				<circle cx="10" cy="20" r="1" />
+				<circle cx="18" cy="20" r="1" />
+			</svg>
+		</div>
+		<h1 class="empty__title">Nothing in your cart yet</h1>
+		<p class="empty__hint">Add something from the shop and it'll show up here.</p>
+		<a routerLink="/" class="empty__cta">Browse the shop</a>
+	</div>
+
 }

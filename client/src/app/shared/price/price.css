@@ -1,0 +1,68 @@
+:host {
+	display: inline-flex;
+}
+
+.price {
+	display: inline-flex;
+	align-items: baseline;
+	font-family: var(--ui-mono);
+	color: var(--ui-ink);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.price__rials {
+	font-weight: 600;
+	letter-spacing: -0.02em;
+}
+
+.price__baisa {
+	font-weight: 500;
+	color: var(--ui-muted);
+}
+
+.price__currency {
+	margin-left: 5px;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+	color: var(--ui-muted);
+}
+
+.price--lg .price__rials {
+	font-size: 20px;
+}
+
+.price--lg .price__baisa {
+	font-size: 12px;
+}
+
+.price--lg .price__currency {
+	font-size: 9px;
+}
+
+.price--md .price__rials {
+	font-size: 16px;
+}
+
+.price--md .price__baisa {
+	font-size: 11px;
+}
+
+.price--md .price__currency {
+	font-size: 9px;
+}
+
+.price--sm .price__rials {
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--ui-muted);
+}
+
+.price--sm .price__baisa {
+	font-size: 10px;
+}
+
+.price--sm .price__currency {
+	margin-left: 4px;
+	font-size: 8px;
+}
